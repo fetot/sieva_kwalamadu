@@ -11,7 +11,7 @@ class Halaman_depan extends CI_Controller {
 	function index(){
 
 		$data = array (
-			'title'		=> '.:: Login SIC Obat Penyakit ::.',
+			'title'		=> 'Login SIEVA PTPN II Kwalamadu',
 			'error'		=> '',
 			'titlesistem'	=> $this->model->getTitle(),
 		);
@@ -23,7 +23,7 @@ class Halaman_depan extends CI_Controller {
 	function petunjuk(){
 
 		$data = array (
-			'title'		=> '.:: Petunjuk Penggunaan SIC Obat Penyakit ::.',
+			'title'		=> 'Petunjuk Penggunaan SIEVA PTPN II Kwalamadu',
 			'error'		=> '',
 			'petunjuk'	=> $this->model->getPetunjuk(),
 			'titlesistem'	=> $this->model->getTitle(),
@@ -37,7 +37,7 @@ class Halaman_depan extends CI_Controller {
 	function tentang(){
 
 		$data = array (
-			'title'		=> '.:: Tentang SIC Obat Penyakit ::.',
+			'title'		=> 'Tentang SIEVA PTPN II Kwalamadu',
 			'error'		=> '',
 			'tentang'	=> $this->model->getTentang(),
 			'titlesistem'	=> $this->model->getTitle(),

@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 03, 2016 at 08:32 PM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Host: localhost
+-- Generation Time: Nov 17, 2022 at 05:58 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sic`
+-- Database: `sieva_kwalamadu`
 --
 
 -- --------------------------------------------------------
@@ -26,13 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `centroid_temp`
 --
 
-CREATE TABLE IF NOT EXISTS `centroid_temp` (
+CREATE TABLE `centroid_temp` (
   `id` int(5) NOT NULL,
   `iterasi` int(11) NOT NULL,
   `c1` varchar(50) NOT NULL,
   `c2` varchar(50) NOT NULL,
   `c3` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `centroid_temp`
@@ -90,18 +92,18 @@ INSERT INTO `centroid_temp` (`id`, `iterasi`, `c1`, `c2`, `c3`) VALUES
 -- Table structure for table `data`
 --
 
-CREATE TABLE IF NOT EXISTS `data` (
+CREATE TABLE `data` (
   `no_data` int(5) NOT NULL,
   `title` varchar(255) NOT NULL,
   `sub` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data`
 --
 
 INSERT INTO `data` (`no_data`, `title`, `sub`) VALUES
-(1, 'SISTEM PENILAIAN PADA PUSKESMAS-PUSKESMAS DI BANDA ACEH DENGAN MENGGUNAKAN METODE CLUSTERING ALGORITMA K-MEANS', 'Kelompok 6 Kelas A'),
+(1, 'SISTEM INFORMASI EVALUASI (SIEVA) HASIL PANEN RAYA LAHAN TEBU PTPN II KWALA MADU', 'Kecamatan Stabat, Kabupaten Langkat'),
 (2, 'Petunjuk Penggunaan', 'Hello'),
 (3, 'Tentang', 'kanjbhsd asdlkjbkasd'),
 (4, 'Wewenang', 'lmkansfas alsmdkasd');
@@ -112,10 +114,10 @@ INSERT INTO `data` (`no_data`, `title`, `sub`) VALUES
 -- Table structure for table `data_fasilitas`
 --
 
-CREATE TABLE IF NOT EXISTS `data_fasilitas` (
+CREATE TABLE `data_fasilitas` (
   `no_fasilitas` int(5) NOT NULL,
   `nama_fasilitas` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_fasilitas`
@@ -192,7 +194,7 @@ INSERT INTO `data_fasilitas` (`no_fasilitas`, `nama_fasilitas`) VALUES
 -- Table structure for table `data_obat`
 --
 
-CREATE TABLE IF NOT EXISTS `data_obat` (
+CREATE TABLE `data_obat` (
   `no` int(5) NOT NULL,
   `nama_obat` varchar(127) NOT NULL,
   `kemasan` varchar(32) NOT NULL,
@@ -200,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `data_obat` (
   `ketersediaan` varchar(12) NOT NULL,
   `persen_ketersediaan` varchar(19) NOT NULL,
   `total_sedia` varchar(14) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_obat`
@@ -286,10 +288,10 @@ INSERT INTO `data_obat` (`no`, `nama_obat`, `kemasan`, `kebutuhan`, `ketersediaa
 -- Table structure for table `data_pasien`
 --
 
-CREATE TABLE IF NOT EXISTS `data_pasien` (
+CREATE TABLE `data_pasien` (
   `no_pasien` int(5) NOT NULL,
   `nama_pasien` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_pasien`
@@ -323,11 +325,11 @@ INSERT INTO `data_pasien` (`no_pasien`, `nama_pasien`) VALUES
 -- Table structure for table `data_penyakit`
 --
 
-CREATE TABLE IF NOT EXISTS `data_penyakit` (
+CREATE TABLE `data_penyakit` (
   `no_penyakit` int(5) NOT NULL,
   `nama_penyakit` varchar(41) DEFAULT NULL,
   `no` int(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_penyakit`
@@ -364,13 +366,13 @@ INSERT INTO `data_penyakit` (`no_penyakit`, `nama_penyakit`, `no`) VALUES
 -- Table structure for table `data_puskesmas`
 --
 
-CREATE TABLE IF NOT EXISTS `data_puskesmas` (
+CREATE TABLE `data_puskesmas` (
   `no_puskesmas` int(5) NOT NULL,
   `nama_puskesmas` varchar(28) NOT NULL,
   `jumlah_pasien_total` int(10) NOT NULL,
   `ketersediaan_obat_total` int(10) NOT NULL,
   `jumlah_fasilitas_total` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_puskesmas`
@@ -395,10 +397,10 @@ INSERT INTO `data_puskesmas` (`no_puskesmas`, `nama_puskesmas`, `jumlah_pasien_t
 -- Table structure for table `data_tahun`
 --
 
-CREATE TABLE IF NOT EXISTS `data_tahun` (
+CREATE TABLE `data_tahun` (
   `no_tahun` int(10) NOT NULL,
   `nama_tahun` int(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_tahun`
@@ -416,7 +418,7 @@ INSERT INTO `data_tahun` (`no_tahun`, `nama_tahun`) VALUES
 -- Table structure for table `hasil`
 --
 
-CREATE TABLE IF NOT EXISTS `hasil` (
+CREATE TABLE `hasil` (
   `id` int(5) NOT NULL,
   `no_puskesmas` int(5) NOT NULL,
   `predikat` varchar(30) NOT NULL,
@@ -425,24 +427,24 @@ CREATE TABLE IF NOT EXISTS `hasil` (
   `d3` int(11) NOT NULL,
   `d4` int(11) NOT NULL,
   `d5` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hasil`
 --
 
 INSERT INTO `hasil` (`id`, `no_puskesmas`, `predikat`, `d1`, `d2`, `d3`, `d4`, `d5`) VALUES
-(1, 1, 'Sangat Baik', 8, 16, 25, 38, 59),
-(2, 11, 'Kurang', 33, 25, 16, 3, 18),
-(3, 21, 'Kurang Sekali', 43, 35, 26, 13, 8),
-(4, 31, 'Kurang', 28, 20, 11, 2, 23),
-(5, 41, 'Sangat Baik', 2, 10, 19, 32, 53),
-(6, 51, 'Kurang', 27, 19, 10, 3, 24),
-(7, 61, 'Kurang', 27, 19, 10, 3, 24),
-(8, 71, 'Kurang', 36, 28, 19, 6, 15),
-(9, 81, 'Kurang', 26, 18, 9, 4, 25),
-(10, 92, 'Cukup', 16, 8, 1, 14, 35),
-(11, 102, 'Kurang', 31, 23, 14, 1, 20);
+(1, 1, 'Sangat Baik', 3, 14, 24, 36, 50),
+(2, 11, 'Kurang', 38, 27, 17, 5, 9),
+(3, 21, 'Kurang Sekali', 48, 37, 27, 15, 1),
+(4, 31, 'Kurang', 33, 22, 12, 0, 14),
+(5, 41, 'Sangat Baik', 3, 8, 18, 30, 44),
+(6, 51, 'Kurang', 32, 21, 11, 1, 15),
+(7, 61, 'Kurang', 32, 21, 11, 1, 15),
+(8, 71, 'Kurang Sekali', 41, 30, 20, 8, 6),
+(9, 81, 'Kurang', 31, 20, 10, 2, 16),
+(10, 92, 'Cukup', 21, 10, 0, 12, 26),
+(11, 102, 'Kurang', 36, 25, 15, 3, 11);
 
 -- --------------------------------------------------------
 
@@ -450,7 +452,7 @@ INSERT INTO `hasil` (`id`, `no_puskesmas`, `predikat`, `d1`, `d2`, `d3`, `d4`, `
 -- Table structure for table `hasil_centroid`
 --
 
-CREATE TABLE IF NOT EXISTS `hasil_centroid` (
+CREATE TABLE `hasil_centroid` (
   `nomor` int(2) NOT NULL,
   `c1a` varchar(50) NOT NULL,
   `c1b` varchar(50) NOT NULL,
@@ -461,7 +463,7 @@ CREATE TABLE IF NOT EXISTS `hasil_centroid` (
   `c3a` varchar(50) NOT NULL,
   `c3b` varchar(50) NOT NULL,
   `c3c` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hasil_centroid`
@@ -479,12 +481,12 @@ INSERT INTO `hasil_centroid` (`nomor`, `c1a`, `c1b`, `c1c`, `c2a`, `c2b`, `c2c`,
 -- Table structure for table `jumlah_fasilitas_puskesmas`
 --
 
-CREATE TABLE IF NOT EXISTS `jumlah_fasilitas_puskesmas` (
+CREATE TABLE `jumlah_fasilitas_puskesmas` (
   `no_jumlah_fasilitas` int(5) NOT NULL,
   `no_fasilitas` int(5) NOT NULL,
   `no_puskesmas` int(5) NOT NULL,
   `jumlah_fasilitas` int(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jumlah_fasilitas_puskesmas`
@@ -1285,12 +1287,12 @@ INSERT INTO `jumlah_fasilitas_puskesmas` (`no_jumlah_fasilitas`, `no_fasilitas`,
 -- Table structure for table `jumlah_obat_puskesmas`
 --
 
-CREATE TABLE IF NOT EXISTS `jumlah_obat_puskesmas` (
+CREATE TABLE `jumlah_obat_puskesmas` (
   `no_jumlah_obat` int(5) NOT NULL,
   `no_puskesmas` int(5) NOT NULL,
   `no` int(5) NOT NULL,
   `jumlah_obat` int(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=900 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jumlah_obat_puskesmas`
@@ -2198,13 +2200,13 @@ INSERT INTO `jumlah_obat_puskesmas` (`no_jumlah_obat`, `no_puskesmas`, `no`, `ju
 -- Table structure for table `jumlah_penyakit_puskesmas`
 --
 
-CREATE TABLE IF NOT EXISTS `jumlah_penyakit_puskesmas` (
+CREATE TABLE `jumlah_penyakit_puskesmas` (
   `no_jumlah_penyakit` int(5) NOT NULL,
   `no_tahun` int(5) NOT NULL,
   `no_puskesmas` int(5) NOT NULL,
   `nama_pasien` varchar(255) NOT NULL,
   `no_penyakit` int(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6505 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jumlah_penyakit_puskesmas`
@@ -8649,11 +8651,11 @@ INSERT INTO `jumlah_penyakit_puskesmas` (`no_jumlah_penyakit`, `no_tahun`, `no_p
 -- Table structure for table `rata_rata`
 --
 
-CREATE TABLE IF NOT EXISTS `rata_rata` (
+CREATE TABLE `rata_rata` (
   `id` int(5) NOT NULL,
   `no_puskesmas` int(5) NOT NULL,
   `rata_rata` int(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rata_rata`
@@ -8678,13 +8680,13 @@ INSERT INTO `rata_rata` (`id`, `no_puskesmas`, `rata_rata`) VALUES
 -- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `id_user` int(5) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(255) NOT NULL,
   `level` int(1) NOT NULL,
   `nama` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -8797,77 +8799,93 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `centroid_temp`
 --
 ALTER TABLE `centroid_temp`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
 --
 -- AUTO_INCREMENT for table `data`
 --
 ALTER TABLE `data`
-  MODIFY `no_data` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `no_data` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `data_fasilitas`
 --
 ALTER TABLE `data_fasilitas`
-  MODIFY `no_fasilitas` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
+  MODIFY `no_fasilitas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
 --
 -- AUTO_INCREMENT for table `data_obat`
 --
 ALTER TABLE `data_obat`
-  MODIFY `no` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+  MODIFY `no` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
 --
 -- AUTO_INCREMENT for table `data_pasien`
 --
 ALTER TABLE `data_pasien`
-  MODIFY `no_pasien` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `no_pasien` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `data_penyakit`
 --
 ALTER TABLE `data_penyakit`
-  MODIFY `no_penyakit` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=122;
+  MODIFY `no_penyakit` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+
 --
 -- AUTO_INCREMENT for table `data_puskesmas`
 --
 ALTER TABLE `data_puskesmas`
-  MODIFY `no_puskesmas` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=103;
+  MODIFY `no_puskesmas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+
 --
 -- AUTO_INCREMENT for table `data_tahun`
 --
 ALTER TABLE `data_tahun`
-  MODIFY `no_tahun` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `no_tahun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `hasil`
 --
 ALTER TABLE `hasil`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `hasil_centroid`
 --
 ALTER TABLE `hasil_centroid`
-  MODIFY `nomor` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `nomor` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `jumlah_fasilitas_puskesmas`
 --
 ALTER TABLE `jumlah_fasilitas_puskesmas`
-  MODIFY `no_jumlah_fasilitas` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1007;
+  MODIFY `no_jumlah_fasilitas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
+
 --
 -- AUTO_INCREMENT for table `jumlah_obat_puskesmas`
 --
 ALTER TABLE `jumlah_obat_puskesmas`
-  MODIFY `no_jumlah_obat` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=900;
+  MODIFY `no_jumlah_obat` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=900;
+
 --
 -- AUTO_INCREMENT for table `jumlah_penyakit_puskesmas`
 --
 ALTER TABLE `jumlah_penyakit_puskesmas`
-  MODIFY `no_jumlah_penyakit` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6505;
+  MODIFY `no_jumlah_penyakit` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6505;
+
 --
 -- AUTO_INCREMENT for table `rata_rata`
 --
 ALTER TABLE `rata_rata`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

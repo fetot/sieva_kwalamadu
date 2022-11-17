@@ -22,13 +22,13 @@
           </button>
           <a class="navbar-brand" href="<?php echo base_url();?>">
           <img src="<?php echo base_url();?>assets/img/logo-navbar.png" class="logo-navbar">
-          <strong>SISTEM INFORMASI CERDAS</strong>
+          <strong>SISTEM INFORMASI EVALUASI</strong>
           </a>
         </div>
         
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="<?php echo base_url();?>"><i class="fa fa-home"></i> Beranda</a></li>
+            <li><a href="<?php echo base_url();?>"><i class="fa fa-home"></i> Beranda</a></li>
             <li><a href="<?php echo base_url();?>petunjuk"><i class="fa fa-book"></i> Petunjuk Penggunaan</a></li>
             <li><a href="<?php echo base_url();?>tentang"><i class="fa fa-user"></i> Tentang</a></li>
             <li class="dropdown">

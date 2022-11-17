@@ -26,7 +26,7 @@ class Administrasi extends CI_Controller {
 		
 			$this->load->model('model');
 			$data = array(
-				'title'			=> '.:: Selamat Datang Bagian Admin::. ',
+				'title'			=> 'Selamat Datang Bagian Admin',
 				'nama'			=> $sesinya['nama'],
 				'petunjuk'		=> $this->model->getPetunjuk(),
 				'wewenang'		=> $this->model->getWewenang(),
