@@ -26,7 +26,7 @@ class Supplier extends CI_Controller {
 		
 			$this->load->model('model');
 			$data = array(
-				'title'			=> '.:: Selamat Datang Supplier ::. ',
+				'title'			=> 'Selamat Datang Supplier',
 				'nama'			=> $sesinya['nama'],
 				'petunjuk'		=> $this->model->getPetunjuk(),
 				'wewenang'		=> $this->model->getWewenang(),

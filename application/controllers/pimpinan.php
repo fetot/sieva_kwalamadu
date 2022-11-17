@@ -26,7 +26,7 @@ class Pimpinan extends CI_Controller {
 		
 			$this->load->model('model');
 			$data = array(
-				'title'			=> '.:: Selamat Datang Pimpinan ::. ',
+				'title'			=> 'Selamat Datang Pimpinan',
 				'nama'			=> $sesinya['nama'],
 				'petunjuk'		=> $this->model->getPetunjuk(),
 				'wewenang'		=> $this->model->getWewenang(),
