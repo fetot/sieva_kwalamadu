@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="<?php echo base_url();?>assets/img/ptpn2logo.ico" type="image/png" sizes="16x16">
     <title><?php echo $title; ?></title>
     <link href="<?=base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/css/datepicker.css" rel="stylesheet">
@@ -33,7 +34,7 @@
         
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-left">
-            <li class="active"><a href="<?php echo base_url();?>administrasi/dashboard"><i class="fa fa-home"></i> Beranda</a></li>
+            <li><a href="<?php echo base_url();?>administrasi/dashboard"><i class="fa fa-home"></i> Beranda</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-th-list"></i> Referensi <i class="fa fa-caret-down"></i></a>
               <ul class="dropdown-menu tipe-kiri dropdown-menu-login2">

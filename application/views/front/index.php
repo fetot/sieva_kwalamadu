@@ -11,7 +11,7 @@
               <div class="col-md-9">
                 <?php foreach ($titlesistem as $t): ?>
                   <h3 class="judul-head"><?php echo $t['title']?></h3>
-                  <!-- <p><i class="fa fa-cog fa-fw"></i> <?php echo $t['sub']?></p>              -->
+                  <p><i class="fa fa-cog fa-fw"></i> <?php echo $t['sub']?></p>             
                 <?php endforeach ?>
               </div>
             </div>
