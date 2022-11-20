@@ -9,10 +9,10 @@
                 <a class="navbar-brand" href="#"><i class="fa fa-plus-circle">
                 <?php
                   if($status == 'baru'){
-                  echo "</i> Tambah Data Penyakit</a>";
+                  echo "</i> Tambah Data Kebun</a>";
                   }
                   else {
-                  echo "</i> Edit Data Penyakit</a>";
+                  echo "</i> Edit Data Kebun</a>";
                   }
                 ?>
               </div>
@@ -25,27 +25,31 @@
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
             <div class="well">
-              <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>administrasi/data_penyakit/save" enctype="multipart/form-data">
-                <input type="hidden" class="form-control" name="no_penyakit" value="<?=$no_penyakit ?>" />
+              <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>administrasi/data_kebun/save" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" name="no" value="<?=$no ?>" />
                 <input type="hidden" class="form-control" name="status" value="<?=$status ?>" />
                 <div class="form-group">
-                  <label for="inputKK" class="col-sm-3 control-label">Nama Penyakit</label>
+                  <label for="inputKK" class="col-sm-3 control-label">Nomor Petak</label>
                   <div class="col-sm-6">
-                  <div class="left-inner-addon">
-                  <i class="fa fa-medkit"></i>
-                      <input type="text" name="nama_penyakit" value="<?php echo $nama_penyakit ?>" required class="form-control" id="inputKK" placeholder="Nama Penyakit" />
-                      </div>
+                      <input type="text" name="nomor_petak" value="<?php echo $nomor_petak ?>" required class="form-control" id="inputKK" placeholder="Nomor Petak" />
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputth" class="col-sm-3 control-label">Pilih Tahun</label>
+                  <label for="inputNama" class="col-sm-3 control-label">Kebun</label>
                   <div class="col-sm-6">
-                    <select name="no" class="select2" required>
-                      <option value=""> -- Pilih Obat-- </option>
-                      <?php foreach ($no as $pt): ?>
-                          <option value="<?=$pt['no']?>"><?=$pt['no']?> - <?=$pt['nama_obat']?></option>
-                      <?php endforeach ?>
-                    </select>
+                      <input type="text" name="nama_kebun" required class="form-control" value="<?php echo $nama_kebun ?>"id="inputNama" placeholder="Kebun" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputNama" class="col-sm-3 control-label">Blok</label>
+                  <div class="col-sm-6">
+                      <input type="text" name="blok" required class="form-control"  value="<?php echo $blok ?>" id="inputNama" placeholder="Blok" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputNama" class="col-sm-3 control-label">Luas (Hektar)</label>
+                  <div class="col-sm-6">
+                      <input name="luas" required type="text" class="form-control" id="inputNama" value="<?php echo $luas ?>" placeholder="Luas dalam satuan hektar" />
                   </div>
                 </div>
                 
@@ -61,7 +65,7 @@
                           echo "Update";
                         }
                       ?>
-                    </button>&nbsp;&nbsp;<a href="<?php echo base_url() ?>administrasi/data_penyakit" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Kembali</a>
+                    </button>&nbsp;&nbsp;<a href="<?php echo base_url() ?>administrasi/data_kebun" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Kembali</a>
                   </div>
                 </div>
               </form>

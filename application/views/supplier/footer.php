@@ -12,7 +12,7 @@
             <li><a href="petunjuk_penggunaan.html" class="link-footer">Petunjuk Penggunaan</a></li>
             <li><a href="tentang.html" class="link-footer">Tentang</a></li>
           </ul>
-          <h5 class="white">Copyright &copy; 2015</h5>
+          <h5 class="white">Copyright &copy; <?php echo date("Y")?></h5>
         </div>
       </div>
     </div>

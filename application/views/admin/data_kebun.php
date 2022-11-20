@@ -17,12 +17,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Daftar Obat</a>
+                <a class="navbar-brand" href="#">Daftar Kebun</a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                  <li><a href="<?php echo base_url() ?>administrasi/data_obat/add"><i class="fa fa-plus-circle"></i> Tambah Data</a></li>
+                  <li><a href="<?php echo base_url() ?>administrasi/data_kebun/add"><i class="fa fa-plus-circle"></i> Tambah Data</a></li>
                 </ul>
                 
                 </div><!-- /.navbar-collapse -->
@@ -33,21 +33,19 @@
           </div>
           <div class="table-responsive">
             <table id="table_data" class="table table-bordered table-striped table-admin">
-            <thead><tr><th>No</th><th>Nama Obat</th><th>Kemasan</th><th>Kebutuhan</th><th>Ketersediaan</th><th>Persen Ketersediaan</th><th>Total Ketersediaan</th><th>Aksi</th></tr></thead>
+            <thead><tr><th>No</th><th>Nomor Petak</th><th>Kebun</th><th>Blok</th><th>Luas (Hektar)</th></tr></thead>
             <tbody>
-            <?php foreach ($data_obat as $o): ?>    
+            <?php foreach ($data_kebun as $o): ?>    
             <tr>
             <td><?=$o['no'] ?></td>
-            <td><?=$o['nama_obat'] ?></td>
-            <td><?=$o['kemasan'] ?></td>
-            <td><?=$o['kebutuhan'] ?></td>
-            <td><?=$o['ketersediaan'] ?></td>
-            <td><?=$o['persen_ketersediaan'] ?></td>
-            <td><?=$o['total_sedia'] ?></td>
+            <td><?=$o['nomor_petak'] ?></td>
+            <td><?=$o['nama_kebun'] ?></td>
+            <td><?=$o['blok'] ?></td>
+            <td><?=$o['luas'] ?></td>
             <td>
-            <p><a href="<?=base_url();?>administrasi/data_obat/edit/<?=$o['no'] ?>" class="btn btn-success" rel="tooltip" data-original-title="Mengubah data pada baris ini" data-placement="top"><i class="fa fa-pencil"></i> Edit</a></p>
+            <p><a href="<?=base_url();?>administrasi/data_kebun/edit/<?=$o['no'] ?>" class="btn btn-success" rel="tooltip" data-original-title="Mengubah data pada baris ini" data-placement="top"><i class="fa fa-pencil"></i> Edit</a></p>
 
-            <p><a href="<?=base_url();?>administrasi/data_obat/del/<?=$o['no'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?')" class="btn btn-danger " rel="tooltip" data-original-title="Menghapus Data pada baris ini" data-placement="top"><i class="fa fa-trash-o"></i> Hapus</a></p></td>
+            <p><a href="<?=base_url();?>administrasi/data_kebun/del/<?=$o['no'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?')" class="btn btn-danger " rel="tooltip" data-original-title="Menghapus Data pada baris ini" data-placement="top"><i class="fa fa-trash-o"></i> Hapus</a></p></td>
             </tr>
             <?php endforeach ?>
             </tbody>

@@ -36,21 +36,10 @@
           <ul class="nav navbar-nav navbar-left">
             <li><a href="<?php echo base_url();?>administrasi/dashboard"><i class="fa fa-home"></i> Beranda</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-th-list"></i> Referensi <i class="fa fa-caret-down"></i></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-th-list"></i> Data <i class="fa fa-caret-down"></i></a>
               <ul class="dropdown-menu tipe-kiri dropdown-menu-login2">
-                <li><a href="<?php echo base_url(); ?>administrasi/data_obat"><i class="fa fa-tags"></i> Daftar Kebun</a></li>
-                <li><a href="<?php echo base_url(); ?>administrasi/data_penyakit"><i class="fa fa-tags"></i> Daftar Blok</a></li>
-                <!-- <li><a href="<?php echo base_url(); ?>administrasi/data_puskesmas"><i class="fa fa-tags"></i> Daftar Puskesmas</a></li> -->
-                <!-- <li><a href="<?php echo base_url(); ?>administrasi/data_fasilitas"><i class="fa fa-tags"></i> Daftar Fasilitas</a></li>
-                <li><a href="<?php echo base_url(); ?>administrasi/data_tahun"><i class="fa fa-tags"></i> Daftar Tahun</a></li> -->
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-th-list"></i> Data Variable <i class="fa fa-caret-down"></i></a>
-              <ul class="dropdown-menu tipe-kiri dropdown-menu-login2">
-                <li><a href="<?php echo base_url(); ?>administrasi/data_jumlah_penyakit_puskesmas"><i class="fa fa-tags"></i> Hasil Panen NETTO</a></li>
-                <li><a href="<?php echo base_url(); ?>administrasi/data_jumlah_fasilitas_puskesmas"><i class="fa fa-tags"></i> Hasil Panen TARA</a></li>
-                <li><a href="<?php echo base_url(); ?>administrasi/data_jumlah_obat_puskesmas"><i class="fa fa-tags"></i> Hasil Panen BRUTO</a></li>
+                <li><a href="<?php echo base_url(); ?>administrasi/data_kebun"><i class="fa fa-tags"></i> Daftar Kebun</a></li>
+                <li><a href="<?php echo base_url(); ?>administrasi/data_hasilpanen"><i class="fa fa-tags"></i> Hasil Panen</a></li>
               </ul>
             </li>
             </ul>

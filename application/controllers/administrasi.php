@@ -41,7 +41,7 @@ class Administrasi extends CI_Controller {
 
 	}
 
-	function data_obat_view(){
+	function data_kebun_view(){
 
 		$this->load->library('session');
 		$sesinya	= $this->session->userdata('login');
@@ -52,24 +52,24 @@ class Administrasi extends CI_Controller {
 		}
 		else {
 
-			$data_obat = $this->adminmodel->selectdata('data_obat order by no desc')->result_array();
+			$data_kebun = $this->adminmodel->selectdata('data_kebun order by no asc')->result_array();
 
 			$data = array(
-				'title'			=> '.:: Data Obat ::. ',
+				'title'			=> 'Data Kebun',
 				'nama'			=> $sesinya['nama'],
-				'data_obat'		=> $data_obat,
+				'data_kebun'	=> $data_kebun,
 				'titlesistem'	=> $this->model->getTitle(),
 			);
 			
 			$this->load->view('admin/header',$data);
-			$this->load->view('admin/data_obat');
+			$this->load->view('admin/data_kebun');
 			$this->load->view('admin/footer');
 
 		}	
 
 	}
 
-	function data_obat_add(){
+	function data_kebun_add(){
 		$this->load->library('session');
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '1'){
@@ -80,47 +80,40 @@ class Administrasi extends CI_Controller {
 		else {
 
 			$data = array(
-				'title'				=> '.:: Tambah Data Obat ::. ',
+				'title'				=> 'Tambah Data Kebun',
 				'nama'				=> $sesinya['nama'],
 				'titlesistem'		=> $this->model->getTitle(),
 				'no'				=> '',
 				'status'			=> 'baru',
-				'nama_obat'			=> '',
-				'kemasan'			=> '',
-				'kebutuhan'			=> '',
-				'ketersediaan'		=> '',
-				'persen_ketersediaan'		=> '',
-				'total_sedia'			=> '',
-
+				'nomor_petak'		=> '',
+				'nama_kebun'		=> '',
+				'blok'				=> '',
+				'luas'				=> ''
 			);
 			
 			$this->load->view('admin/header',$data);
-			$this->load->view('admin/data_obat_form');
+			$this->load->view('admin/data_kebun_form');
 			$this->load->view('admin/footer');
 
 		}	
 	}
 
-	function data_obat_save(){
+	function data_kebun_save(){
 		if($_POST){
 
-			$status 			= $this->input->post('status');
-			$no 				= $this->input->post('no');
-			$nama_obat				= $this->input->post('nama_obat');
-			$kemasan	= $this->input->post('kemasan');
-			$kebutuhan				= $this->input->post('kebutuhan');
-			$ketersediaan				= $this->input->post('ketersediaan');
-			$persen_ketersediaan	= $this->input->post('persen_ketersediaan');
-			$total_sedia				= $this->input->post('total_sedia');
+			$status 				= $this->input->post('status');
+			$no 					= $this->input->post('no');
+			$nomor_petak			= $this->input->post('nomor_petak');
+			$nama_kebun				= $this->input->post('nama_kebun');
+			$blok					= $this->input->post('blok');
+			$luas					= $this->input->post('luas');
 
 			if($status == 'baru'){
 				$data = array(
-					'nama_obat'	=> $nama_obat,
-					'kemasan'	=> $kemasan,
-					'kebutuhan'			=> $kebutuhan,
-					'ketersediaan'	=> $ketersediaan,
-					'persen_ketersediaan'	=> $persen_ketersediaan,
-					'total_sedia'			=> $total_sedia,
+					'nomor_petak'	=> $nomor_petak,
+					'nama_kebun'	=> $nama_kebun,
+					'blok'			=> $blok,
+					'luas'			=> $luas
 				);
 				$sukses = '
 					<div class="alert alert-success">
@@ -129,18 +122,16 @@ class Administrasi extends CI_Controller {
 					</div>
 				';
 				$this->session->set_flashdata('sukses', $sukses);
-				$this->adminmodel->insertdata('data_obat',$data);
-				redirect('administrasi/data_obat');
+				$this->adminmodel->insertdata('data_kebun',$data);
+				redirect('administrasi/data_kebun');
 
 			}
 			else {
 				$data = array(
-					'nama_obat'	=> $nama_obat,
-					'kemasan'	=> $kemasan,
-					'kebutuhan'			=> $kebutuhan,
-					'ketersediaan'	=> $ketersediaan,
-					'persen_ketersediaan'	=> $persen_ketersediaan,
-					'total_sedia'			=> $total_sedia,
+					'nomor_petak'	=> $nomor_petak,
+					'nama_kebun'	=> $nama_kebun,
+					'blok'			=> $blok,
+					'luas'			=> $luas
 				);
 				$sukses = '
 					<div class="alert alert-success">
@@ -149,8 +140,8 @@ class Administrasi extends CI_Controller {
 					</div>
 				';
 				$this->session->set_flashdata('sukses', $sukses);
-				$this->adminmodel->updatedata('data_obat',$data,array('no' => $no));
-				redirect('administrasi/data_obat');
+				$this->adminmodel->updatedata('data_kebun',$data,array('no' => $no));
+				redirect('administrasi/data_kebun');
 			}
 		}
 		else {
@@ -159,7 +150,7 @@ class Administrasi extends CI_Controller {
 	}
 
 
-	function data_obat_edit($id = ''){
+	function data_kebun_edit($id = ''){
 		$this->load->library('session');
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '1'){
@@ -169,32 +160,30 @@ class Administrasi extends CI_Controller {
 		}
 		else {
 
-			$data_obat = $this->adminmodel->selectdata('data_obat where no = "'.$id.'"')->result_array();
+			$data_kebun = $this->adminmodel->selectdata('data_kebun where no = "'.$id.'"')->result_array();
 
 			$data = array(
-				'title'				=> '.:: Edit Data Obat ::. ',
-				'titlesistem'	=> $this->model->getTitle(),
+				'title'				=> 'Edit Data Kebun',
+				'titlesistem'		=> $this->model->getTitle(),
 				'nama'				=> $sesinya['nama'],
-				'no'				=> $data_obat[0]['no'],
+				'no'				=> $data_kebun[0]['no'],
 				'status'			=> 'edit',
-				'nama_obat'			=> $data_obat[0]['nama_obat'],
-				'kemasan'			=> $data_obat[0]['kemasan'],
-				'kebutuhan'			=> $data_obat[0]['kebutuhan'],
-				'ketersediaan'			=> $data_obat[0]['ketersediaan'],
-				'persen_ketersediaan'			=> $data_obat[0]['persen_ketersediaan'],
-				'total_sedia'			=> $data_obat[0]['total_sedia'],
+				'nomor_petak'		=> $data_kebun[0]['nomor_petak'],
+				'nama_kebun'		=> $data_kebun[0]['nama_kebun'],
+				'luas'				=> $data_kebun[0]['luas'],
+				'blok'				=> $data_kebun[0]['blok'],
 
 			);
 			
 			$this->load->view('admin/header',$data);
-			$this->load->view('admin/data_obat_form');
+			$this->load->view('admin/data_kebun_form');
 			$this->load->view('admin/footer');
 
 		}	
 	}
 
-	function data_obat_del($id = ''){
-		$hasil	= $this->adminmodel->deldata('data_obat',array('no' => $id));
+	function data_kebun_del($id = ''){
+		$hasil	= $this->adminmodel->deldata('data_kebun',array('no' => $id));
 		$sukses = '
 					<div class="alert alert-success">
 					  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -202,10 +191,10 @@ class Administrasi extends CI_Controller {
 					</div>
 				';
 				$this->session->set_flashdata('sukses', $sukses);
-		redirect('administrasi/data_obat');
+		redirect('administrasi/data_kebun');
 	}
 
-	function data_penyakit_view(){
+	function data_hasilpanen_view(){
 
 		$this->load->library('session');
 		$sesinya	= $this->session->userdata('login');
@@ -216,24 +205,24 @@ class Administrasi extends CI_Controller {
 		}
 		else {
 
-			$data_penyakit = $this->adminmodel->selectdata('data_penyakit LEFT JOIN data_obat on data_penyakit.no=data_obat.no')->result_array();
+			$data_hasilpanen = $this->adminmodel->selectdata('data_hasilpanen LEFT JOIN data_kebun on data_hasilpanen.nomor_petak=data_kebun.nomor_petak')->result_array();
 
 			$data = array(
-				'title'			=> '.:: Data Penyakit ::. ',
-				'nama'			=> $sesinya['nama'],
-				'data_penyakit'		=> $data_penyakit,
-				'titlesistem'	=> $this->model->getTitle(),
+				'title'				=> 'Hasil Panen',
+				'nama'				=> $sesinya['nama'],
+				'data_hasilpanen'	=> $data_hasilpanen,
+				'titlesistem'		=> $this->model->getTitle(),
 			);
 			
 			$this->load->view('admin/header',$data);
-			$this->load->view('admin/data_penyakit');
+			$this->load->view('admin/data_hasilpanen');
 			$this->load->view('admin/footer');
 
 		}	
 
 	}
 
-	function data_penyakit_add(){
+	function data_hasilpanen_add(){
 		$this->load->library('session');
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '1'){
@@ -242,38 +231,53 @@ class Administrasi extends CI_Controller {
 
 		}
 		else {
-			$pilih_obat = $this->adminmodel->selectdata('data_obat order by no desc')->result_array();
+
+			$data_kebun = $this->adminmodel->selectdata('data_kebun order by no asc')->result_array();
 
 			$data = array(
-				'title'				=> '.:: Tambah Data Penyakit ::. ',
+				'title'				=> 'Tambah Data Hasil Panen',
 				'nama'				=> $sesinya['nama'],
 				'titlesistem'		=> $this->model->getTitle(),
-				'no_penyakit'		=> '',
+				'no_hasilpanen'		=> '',
 				'status'			=> 'baru',
-				'nama_penyakit'		=> '',
-				'no'				=> $pilih_obat,
+				'no_spta'			=> '',
+				'nomor_petak'		=> '',
+				'bruto'				=> '',
+				'tara'				=> '',
+				'netto'				=> '',
+				'tgl_timbang'		=> '',
 
 			);
 			
 			$this->load->view('admin/header',$data);
-			$this->load->view('admin/data_penyakit_form');
+			$this->load->view('admin/data_hasilpanen_form');
 			$this->load->view('admin/footer');
 
 		}	
 	}
 
-	function data_penyakit_save(){
+
+	function data_hasilpanen_save(){
 		if($_POST){
 
 			$status 			= $this->input->post('status');
-			$no_penyakit 				= $this->input->post('no_penyakit');
-			$nama_penyakit				= $this->input->post('nama_penyakit');
-			$no					= $this->input->post('no');
+			$no_hasilpanen 		= $this->input->post('no_hasilpanen');
+			$no_spta			= $this->input->post('no_spta');
+			$nomor_petak		= $this->input->post('nomor_petak');
+			$bruto				= $this->input->post('bruto');
+			$tara				= $this->input->post('tara');
+			$netto				= $this->input->post('netto');
+			$tgl_timbang		= $this->input->post('tgl_timbang');
 
 			if($status == 'baru'){
 				$data = array(
-					'nama_penyakit'	=> $nama_penyakit,
-					'no'	=> $no,
+					'no_hasilpanen'		=> $no_hasilpanen,
+					'no_spta'			=> $no_spta,
+					'nomor_petak'		=> $nomor_petak,
+					'bruto' 			=> $bruto,
+					'tara'				=> $tara,
+					'netto'				=> $netto,
+					'tgl_timbang'		=> $tgl_timbang
 				);
 				$sukses = '
 					<div class="alert alert-success">
@@ -282,14 +286,19 @@ class Administrasi extends CI_Controller {
 					</div>
 				';
 				$this->session->set_flashdata('sukses', $sukses);
-				$this->adminmodel->insertdata('data_penyakit',$data);
-				redirect('administrasi/data_penyakit');
+				$this->adminmodel->insertdata('data_hasilpanen',$data);
+				redirect('administrasi/data_hasilpanen');
 
 			}
 			else {
 				$data = array(
-					'nama_penyakit'	=> $nama_penyakit,
-					'no'	=> $no,
+					'no_hasilpanen'		=> $no_hasilpanen,
+					'no_spta'			=> $no_spta,
+					'nomor_petak'		=> $nomor_petak,
+					'bruto' 			=> $bruto,
+					'tara'				=> $tara,
+					'netto'				=> $netto,
+					'tgl_timbang'		=> $tgl_timbang
 				);
 				$sukses = '
 					<div class="alert alert-success">
@@ -298,8 +307,8 @@ class Administrasi extends CI_Controller {
 					</div>
 				';
 				$this->session->set_flashdata('sukses', $sukses);
-				$this->adminmodel->updatedata('data_penyakit',$data,array('no_penyakit' => $no_penyakit));
-				redirect('administrasi/data_penyakit');
+				$this->adminmodel->updatedata('data_hasilpanen',$data,array('no_hasilpanen' => $no_hasilpanen));
+				redirect('administrasi/data_hasilpanen');
 			}
 		}
 		else {
@@ -308,7 +317,7 @@ class Administrasi extends CI_Controller {
 	}
 
 
-	function data_penyakit_edit($id = ''){
+	function data_hasilpanen_edit($id = ''){
 		$this->load->library('session');
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '1'){
@@ -318,29 +327,33 @@ class Administrasi extends CI_Controller {
 		}
 		else {
 
-			$data_penyakit = $this->adminmodel->selectdata('data_penyakit where no_penyakit = "'.$id.'"')->result_array();
-			$pilih_obat = $this->adminmodel->selectdata('data_obat order by no desc')->result_array();
+			$data_hasilpanen = $this->adminmodel->selectdata('data_hasilpanen where no_hasilpanen = "'.$id.'"')->result_array();
+			$data_kebun = $this->adminmodel->selectdata('data_kebun order by no asc')->result_array();
 
 			$data = array(
-				'title'				=> '.:: Edit Data Penyakit ::. ',
-				'titlesistem'	=> $this->model->getTitle(),
+				'title'				=> 'Edit Data Hasil Panen',
+				'titlesistem'		=> $this->model->getTitle(),
 				'nama'				=> $sesinya['nama'],
-				'no_penyakit'				=> $data_penyakit[0]['no_penyakit'],
+				'no_hasilpanen'		=> $data_hasilpanen[0]['no_hasilpanen'],
 				'status'			=> 'edit',
-				'nama_penyakit'			=> $data_penyakit[0]['nama_penyakit'],
-				'no'			=> $pilih_obat,
+				'no_spta'			=> $data_hasilpanen[0]['no_spta'],
+				'nomor_petak'		=> $data_hasilpanen[0]['nomor_petak'],
+				'bruto' 			=> $data_hasilpanen[0]['bruto'],
+				'tara'				=> $data_hasilpanen[0]['tara'],
+				'netto'				=> $data_hasilpanen[0]['netto'],
+				'tgl_timbang'		=> $data_hasilpanen[0]['tgl_timbang'],
 
 			);
 			
 			$this->load->view('admin/header',$data);
-			$this->load->view('admin/data_penyakit_form');
+			$this->load->view('admin/data_hasilpanen_form');
 			$this->load->view('admin/footer');
 
 		}	
 	}
 
-	function data_penyakit_del($id = ''){
-		$hasil	= $this->adminmodel->deldata('data_penyakit',array('no_penyakit' => $id));
+	function data_hasilpanen_del($id = ''){
+		$hasil	= $this->adminmodel->deldata('data_hasilpanen',array('no_hasilpanen' => $id));
 		$sukses = '
 					<div class="alert alert-success">
 					  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -348,7 +361,7 @@ class Administrasi extends CI_Controller {
 					</div>
 				';
 				$this->session->set_flashdata('sukses', $sukses);
-		redirect('administrasi/data_penyakit');
+		redirect('administrasi/data_hasilpanen');
 	}
 
 function data_puskesmas_view(){
@@ -467,7 +480,7 @@ function data_puskesmas_view(){
 			$data_puskesmas = $this->adminmodel->selectdata('data_puskesmas where no_puskesmas = "'.$id.'"')->result_array();
 
 			$data = array(
-				'title'				=> '.:: Edit Data Penyakit ::. ',
+				'title'				=> 'Edit Data Penyakit',
 				'titlesistem'	=> $this->model->getTitle(),
 				'nama'				=> $sesinya['nama'],
 				'no_puskesmas'				=> $data_puskesmas[0]['no_puskesmas'],
@@ -789,7 +802,7 @@ function data_puskesmas_view(){
 
 			// $data_jumlah_penyakit_puskesmas = $this->adminmodel->selectdata('jumlah_penyakit_puskesmas order by no_jumlah_penyakit desc')->result_array();
 
-			$data_jumlah_penyakit_puskesmas = $this->adminmodel->selectdata('jumlah_penyakit_puskesmas INNER JOIN data_tahun ON jumlah_penyakit_puskesmas.no_tahun = data_tahun.no_tahun INNER JOIN data_puskesmas on jumlah_penyakit_puskesmas.no_puskesmas = data_puskesmas.no_puskesmas INNER JOIN data_penyakit on jumlah_penyakit_puskesmas.no_penyakit=data_penyakit.no_penyakit LEFT JOIN data_obat on data_penyakit.no=data_obat.no')->result_array();
+			$data_jumlah_penyakit_puskesmas = $this->adminmodel->selectdata('jumlah_penyakit_puskesmas INNER JOIN data_tahun ON jumlah_penyakit_puskesmas.no_tahun = data_tahun.no_tahun INNER JOIN data_puskesmas on jumlah_penyakit_puskesmas.no_puskesmas = data_puskesmas.no_puskesmas INNER JOIN data_penyakit on jumlah_penyakit_puskesmas.no_penyakit=data_penyakit.no_penyakit LEFT JOIN data_kebun on data_penyakit.no=data_kebun.no')->result_array();
 
 			// $this->db->select('*');    
 			// $this->db->from('table1');
@@ -1110,7 +1123,7 @@ function data_puskesmas_view(){
 		}
 		else {
 
-			$data_jumlah_obat_puskesmas = $this->adminmodel->selectdata('jumlah_obat_puskesmas LEFT JOIN data_puskesmas on jumlah_obat_puskesmas.no_puskesmas = data_puskesmas.no_puskesmas LEFT JOIN data_obat on jumlah_obat_puskesmas.no=data_obat.no')->result_array();
+			$data_jumlah_obat_puskesmas = $this->adminmodel->selectdata('jumlah_obat_puskesmas LEFT JOIN data_puskesmas on jumlah_obat_puskesmas.no_puskesmas = data_puskesmas.no_puskesmas LEFT JOIN data_kebun on jumlah_obat_puskesmas.no=data_kebun.no')->result_array();
 
 			$data = array(
 				'title'			=> '.:: Data Obat Penyakit ::. ',
@@ -1137,7 +1150,7 @@ function data_puskesmas_view(){
 		}
 		else {
 			$pilih_puskesmas = $this->adminmodel->selectdata('data_puskesmas order by no_puskesmas desc')->result_array();
-			$pilih_obat = $this->adminmodel->selectdata('data_obat order by no desc')->result_array();
+			$pilih_obat = $this->adminmodel->selectdata('data_kebun order by no desc')->result_array();
 
 			$data = array(
 				'title'				=> '.:: Tambah Data Obat ::. ',
@@ -1219,7 +1232,7 @@ function data_puskesmas_view(){
 
 			$jumlah_obat_puskesmas = $this->adminmodel->selectdata('jumlah_obat_puskesmas where no_jumlah_obat = "'.$id.'"')->result_array();
 			$pilih_puskesmas = $this->adminmodel->selectdata('data_puskesmas order by no_puskesmas desc')->result_array();
-			$pilih_obat = $this->adminmodel->selectdata('data_obat order by no desc')->result_array();
+			$pilih_obat = $this->adminmodel->selectdata('data_kebun order by no desc')->result_array();
 
 			$data = array(
 				'title'					=> '.:: Edit Data Jumlah Penyakit ::. ',
@@ -1256,99 +1269,5 @@ function data_puskesmas_view(){
 		$this->session->sess_destroy();
 		redirect('');
 	}
-
-	// function random(){
-	// 	$pilih_penyakit = $this->adminmodel->selectdata('data_penyakit order by no_penyakit desc')->result_array();
-	// 	$pilih_tahun = $this->adminmodel->selectdata('data_tahun order by no_tahun desc')->result_array();
-	// 	$pilih_puskesmas = $this->adminmodel->selectdata('data_puskesmas order by no_puskesmas desc')->result_array();
-	// 	$pilih_pasien = $this->adminmodel->selectdata('data_pasien order by no_pasien desc')->result_array();
-
-	// 	$max_1 = count($pilih_penyakit);
-	// 	$max_2 = count($pilih_tahun);
-	// 	$max_3 = count($pilih_puskesmas);
-	// 	$max_4 = count($pilih_pasien);
-	// 	//echo $max_1." ".$max_2." ".$max_3." ".$max_4;
-	// 	echo "<hr>";
-	// 	for($i=1;$i<=1000;$i++){
-	// 		$no_tahun = $pilih_tahun[rand(0,$i)]['no_tahun'];
-	// 		$no_puskesmas = $pilih_puskesmas[rand(0,$i)]['no_puskesmas'];
-	// 		$nama_pasien = $pilih_pasien[rand(0,$i)]['nama_pasien']." ".$pilih_pasien[rand(0,$i)]['nama_pasien'];
-	// 		$no_penyakit = $pilih_penyakit[rand(0,$i)]['no_penyakit'];
-	// 		echo $no_tahun."<br>";
-	// 		$no_puskesmas = 102;
-	// 		echo $no_puskesmas."<br>";
-	// 		echo $nama_pasien."<br>";
-	// 		echo $no_penyakit."<br><br>";
-
-	// 		$data = array(
-	// 				'no_puskesmas'	=> $no_puskesmas,
-	// 				'nama_pasien'	=> $nama_pasien,
-	// 				'no_penyakit'	=> $no_penyakit,
-	// 				'no_tahun'		=> $no_tahun,
-	// 		);
-	// 		$this->adminmodel->insertdata('jumlah_penyakit_puskesmas',$data);
-	// 	}
-
-	// }
-
-
-	// function random(){
-	// 	$pilih_fasilitas = $this->adminmodel->selectdata('data_fasilitas order by no_fasilitas desc')->result_array();
-	// 	$pilih_puskesmas = $this->adminmodel->selectdata('data_puskesmas order by no_puskesmas desc')->result_array();
-
-	// 	$max_1 = count($pilih_fasilitas);
-	// 	$max_2 = count($pilih_puskesmas);
-	// 	echo "<hr>";
-	// 	for($i=1;$i<=100;$i++){
-	// 		$no_puskesmas = $pilih_puskesmas[rand(0,$i)]['no_puskesmas'];
-	// 		$no_fasilitas = $pilih_fasilitas[rand(0,$i)]['no_fasilitas'];
-	// 		$no_puskesmas = 102;
-	// 		$jumlah_fasilitas = rand(1,80);
-	// 		echo $no_puskesmas."<br>";
-	// 		echo $no_fasilitas."<br>";
-	// 		echo $jumlah_fasilitas."<br><br>";
-
-	// 		$data = array(
-	// 				'no_puskesmas'	=> $no_puskesmas,
-	// 				'no_fasilitas'	=> $no_fasilitas,
-	// 				'jumlah_fasilitas'	=> $jumlah_fasilitas,
-	// 		);
-	// 		$this->adminmodel->insertdata('jumlah_fasilitas_puskesmas',$data);
-	// 	}
-
-	// }
-
-	// function random(){
-	// 	$pilih_obat = $this->adminmodel->selectdata('data_obat order by no desc')->result_array();
-	// 	$pilih_puskesmas = $this->adminmodel->selectdata('data_puskesmas order by no_puskesmas desc')->result_array();
-
-	// 	$max_1 = count($pilih_obat);
-	// 	$max_2 = count($pilih_puskesmas);
-	// 	echo "<hr>";
-	// 	for($i=1;$i<=100;$i++){
-	// 		$no_puskesmas = $pilih_puskesmas[rand(0,$i)]['no_puskesmas'];
-	// 		$no = $pilih_obat[rand(0,$i)]['no'];
-	// 		$no_puskesmas = 102;
-	// 		$jumlah_obat = rand(1,80);
-	// 		echo $no_puskesmas."<br>";
-	// 		echo $no."<br>";
-	// 		echo $jumlah_obat."<br><br>";
-
-	// 		$data = array(
-	// 				'no_puskesmas'	=> $no_puskesmas,
-	// 				'no'	=> $no,
-	// 				'jumlah_obat'	=> $jumlah_obat,
-	// 		);
-	// 		$this->adminmodel->insertdata('jumlah_obat_puskesmas',$data);
-	// 	}
-
-	// }
-
-	/*
-	
-	SELECT data_puskesmas.no_puskesmas,data_puskesmas.nama_puskesmas, ROUND(AVG(jumlah_fasilitas_puskesmas.jumlah_fasilitas)) AS jumlah_fasilitas_total,ROUND(AVG(jumlah_obat_puskesmas.jumlah_obat)) AS ketersediaan_obat_total,ROUND(AVG(jumlah_penyakit_puskesmas.no_penyakit-20)) AS jumlah_pasien_total from data_puskesmasINNER JOIN jumlah_fasilitas_puskesmas on jumlah_fasilitas_puskesmas.no_puskesmas=data_puskesmas.no_puskesmas INNER JOIN jumlah_penyakit_puskesmas on jumlah_penyakit_puskesmas.no_puskesmas=data_puskesmas.no_puskesmas INNER JOIN jumlah_obat_puskesmas on jumlah_obat_puskesmas.no_puskesmas=data_puskesmas.no_puskesmas GROUP by data_puskesmas.no_puskesmas
-
-	*/
-
 
 }

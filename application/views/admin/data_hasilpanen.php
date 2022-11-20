@@ -17,12 +17,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Daftar Penyakit</a>
+                <a class="navbar-brand" href="#">Hasil Panen</a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                  <li><a href="<?php echo base_url() ?>administrasi/data_penyakit/add"><i class="fa fa-plus-circle"></i> Tambah Data</a></li>
+                  <li><a href="<?php echo base_url() ?>administrasi/data_hasilpanen/add"><i class="fa fa-plus-circle"></i> Tambah Data</a></li>
                 </ul>
                 
                 </div><!-- /.navbar-collapse -->
@@ -33,23 +33,25 @@
           </div>
           <div class="table-responsive">
             <table id="table_data" class="table table-bordered table-striped table-admin">
-            <thead><tr><th>No</th><th>Nama Penyakit</th><th>Nama Obat</th><th>Aksi</th></tr></thead>
+            <thead><tr><th>No</th><th>Nomor SPTA</th><th>Nomor Petak</th><th>Kebun</th><th>Blok</th><th>Luas (Hektar)</th><th>Bruto (Kg)</th><th>Tara (Kg)</th><th>Netto (Kg)</th><th>Tanggal Timbang</th><th>Aksi</th></tr></thead>
             <tbody>
-            <?php foreach ($data_penyakit as $p): ?>    
+            <?php foreach ($data_hasilpanen as $p): ?>    
             <tr>
-            <td><?=$p['no_penyakit'] ?></td>
-            <td><?=$p['nama_penyakit'] ?></td>
+            <td><?=$p['no_hasilpanen'] ?></td>
+            <td><?=$p['no_spta'] ?></td>
+            <td><?=$p['nomor_petak'] ?></td>
+            <td><?=$p['nama_kebun'] ?></td>
+            <td><?=$p['blok'] ?></td>
+            <td><?=$p['luas'] ?></td>
+            <td><?=number_format($p['bruto']) ?></td>
+            <td><?=number_format($p['tara']) ?></td>
+            <td><?=number_format($p['netto']) ?></td>
+            <td><?=$p['tgl_timbang'] ?></td>
             <td>
-            <?php if($p['no']==0 OR $p['no']==null){
-            echo "<span style='color:red'>(OBAT TIDAK TERSEDIA)</span>" ?>
-            <?php }else{ ?>
-            (<?=$p['no'] ?>) <?=$p['nama_obat'] ?>
-            <?php } ?>
-            </td>
-            <td>
-            <p><a href="<?=base_url();?>administrasi/data_penyakit/edit/<?=$p['no_penyakit'] ?>" class="btn btn-success" rel="tooltip" data-original-title="Mengubah data pada baris ini" data-placement="top"><i class="fa fa-pencil"></i> Edit</a></p>
+              <p><a href="<?=base_url();?>administrasi/data_hasilpanen/edit/<?=$p['no_hasilpanen'] ?>" class="btn btn-success" rel="tooltip" data-original-title="Mengubah data pada baris ini" data-placement="top"><i class="fa fa-pencil"></i> Edit</a></p>
 
-            <p><a href="<?=base_url();?>administrasi/data_penyakit/del/<?=$p['no_penyakit'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?')" class="btn btn-danger " rel="tooltip" data-original-title="Menghapus Data pada baris ini" data-placement="top"><i class="fa fa-trash-o"></i> Hapus</a></p></td>
+              <p><a href="<?=base_url();?>administrasi/data_hasilpanen/del/<?=$p['no_hasilpanen'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?')" class="btn btn-danger " rel="tooltip" data-original-title="Menghapus Data pada baris ini" data-placement="top"><i class="fa fa-trash-o"></i> Hapus</a></p>
+            </td>
             </tr>
             <?php endforeach ?>
             </tbody>

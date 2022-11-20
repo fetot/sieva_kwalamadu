@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 17, 2022 at 05:58 AM
+-- Generation Time: Nov 20, 2022 at 12:29 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -191,96 +191,48 @@ INSERT INTO `data_fasilitas` (`no_fasilitas`, `nama_fasilitas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_obat`
+-- Table structure for table `data_hasilpanen`
 --
 
-CREATE TABLE `data_obat` (
-  `no` int(5) NOT NULL,
-  `nama_obat` varchar(127) NOT NULL,
-  `kemasan` varchar(32) NOT NULL,
-  `kebutuhan` varchar(10) NOT NULL,
-  `ketersediaan` varchar(12) NOT NULL,
-  `persen_ketersediaan` varchar(19) NOT NULL,
-  `total_sedia` varchar(14) DEFAULT NULL
+CREATE TABLE `data_hasilpanen` (
+  `no_hasilpanen` int(5) NOT NULL,
+  `no_spta` varchar(28) NOT NULL,
+  `nomor_petak` varchar(32) NOT NULL,
+  `bruto` int(11) NOT NULL,
+  `tara` int(11) NOT NULL,
+  `netto` int(11) NOT NULL,
+  `tgl_timbang` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `data_obat`
+-- Dumping data for table `data_hasilpanen`
 --
 
-INSERT INTO `data_obat` (`no`, `nama_obat`, `kemasan`, `kebutuhan`, `ketersediaan`, `persen_ketersediaan`, `total_sedia`) VALUES
-(1, 'Alopurinol tablet 100 mg', '100 tablet/strip/blister , kotak', '284505', '342323', '120.00', '1853.36'),
-(2, 'Aminofilin tablet 200 mg', '100 tablet / botol', '773931', '868249', '112.00', '2707.91'),
-(3, 'Aminofilin injeksi 24 mg/ml', '30 ampul / kotak', '22885', '19889', '86.91', '2276.95'),
-(4, 'Amitripilin tablet salut 25 mg (HCL)', '100 tablet/strip/blister , kotak', '33845', '38214', '112.91', '2256.16'),
-(5, 'Amoksisilin kapsul 250 mg', '120 kapsul/strip/blister, kotak', '2433126', '2351710', '96.65', '2098.70'),
-(6, 'Amoksisilin kaplet 500 mg', '100 kaplet/strip, kotak', '16263729', '19801456', '121.75', '1801.34'),
-(7, 'Amoksisilin sirup kering 125 mg/ 5 mg', 'Botol  60 ml', '5808126', '7348935', '126.53', '1273.12'),
-(8, 'Metampiron tablet 500 mg', '1000 tablet / botol', '5014326', '4559682', '90.93', '2173.37'),
-(9, 'Metampiron injeksi 250 mg', '30 ampul / kotak', '241070', '172198', '71.43', '2254.70'),
-(10, 'Antasida DOEN I tablet kunyah, kombinasi :Aluminium Hidroksida 200 mg + Magnesium Hidroksida 200 mg', 'btl 1000 tablet', '6689646', '7324046', '109.48', '3039.41'),
-(11, 'Anti Bakteri DOEN saleb kombinasi : Basitrasin 500 IU/g + polimiksin 10.000 IU/g', '25 tube @ 5 g  / kotak', '65777', '66063', '100.43', '2320.14'),
-(12, 'Antihemoroid DOEN kombinasi : Bismut Subgalat 150 mg + Heksaklorofen 250 mg', '10 supp / kotak', '83071', '101696', '122.42', '1405.55'),
-(13, 'Antifungi DOEN Kombinasi : Asam Benzoat 6 + Asam Salisilat 3', '24 pot @ 30 g / kotak', '30650', '34172', '111.49', '1007.40'),
-(14, 'Antimigren : Ergotamin tartrat 1 mg + Kofein 50 mg', '100 tablet / botol', '154873', '153303', '98.99', '2158.77'),
-(15, 'Antiparkinson DOEN tablet kombinasi : Karbidopa 25 mg + Levodopa 250 mg', 'ktk 10 x 10 tablet', '1770', '689', '38.93', '2373.34'),
-(16, 'Aqua Pro Injeksi Steril, bebas pirogen', '10 vial @20 ml  / kotak', '69466', '76,847', '110.63', '2137.14'),
-(17, 'Asam Askorbat (vitamin C) tablet 50 mg', '1000 tablet / botol', '6832249', '7279563', '106.55', '3058.98'),
-(18, 'Asam Asetisalisilat tablet 100 mg (Asetosal)', 'ktk 10 x 10 tablet', '15962', '15968', '100.04', '2522.23'),
-(19, 'Asam Asetisalisilat tablet 500 mg (Asetosal)', 'ktk 10 x 10 tablet', '293281', '257221', '87.70', '2341.75'),
-(20, 'Atropin sulfat tablet 0,5 mg', '500 tablet / botol', '13965', '10732', '76.85', '2453.80'),
-(21, 'Atropin tetes mata 0,5', '24 btl @ 5 ml / kotak', '3529', '2113', '59.87', '2636.61'),
-(22, 'Atropin injeksi l.m/lv/s.k. 0,25 mg/mL - 1 mL (sulfat)', '30 ampul / kotak', '6680', '5567', '83.34', '2456.66'),
-(23, 'Betametason krim 0,1 ', '25 tube @ 5 g / kotak', '260940', '308832', '118.35', '1999.82'),
-(24, 'Deksametason Injeksi I.v. 5 mg/ml', '100 ampul /kotak', '97879', '74022', '75.63', '2352.25'),
-(25, 'Deksametason tablet 0,5 mg', '1000 tablet / botol', '9250534', '9390834', '101.52', '2138.18'),
-(26, 'Dekstran 70-larutan infus 6 steril', 'Botol 500 ml', '3620', '4304', '118.89', '2217.82'),
-(27, 'Dekstrometorfan sirup 10 mg/5 ml (HBr)', 'Botol 60 ml', '848459', '892640', '105.21', '1460.50'),
-(28, 'Dekstrometorfan tablet 15 mg (HBr)', '1000 tablet / botol', '1985411', '2188972', '110.25', '2869.67'),
-(29, 'Diazepam Injeksi 5mg/ml', '30 ampul / kotak', '12025', '12342', '102.64', '1814.34'),
-(30, 'Diazepam tablet 2 mg', '1000 tablet / botol', '853210', '739476', '86.67', '1483.41'),
-(31, 'Diazepam tablet 5 mg', '250 tablet / botol', '25200', '27729', '110.03', '1797.71'),
-(32, 'Difenhidramin Injeksi I.M. 10 mg/ml (HCL)', '30 ampul / kotak', '129139', '140009', '108.42', '2066.32'),
-(33, 'Diagoksin tablet 0,25 mg', '100 tablet / kotak', '180450', '211844', '117.40', '2131.19'),
-(34, 'Efedrin tablet 25 mg (HCL)', '1000 tablet / botol', '1227122', '959673', '78.21', '2476.62'),
-(35, 'Ekstrks belladona tablet 10 mg', '1000 tablet / botol', '1016544', '899797', '88.52', '1840.63'),
-(36, 'Epinefrin (Adrenalin) injeksi 0,1 (sebagai HCL)', '30 ampul /kotak', '27189', '23724', '87.25', '2145.02'),
-(37, 'Etakridin larutan 0,1', 'Botol 300 ml', '288467', '287951', '99.82', NULL),
-(38, 'Fenitoin Natriun Injeksi 50 mg/ml', 'ampul @ 2 ml', '1303', '1030', '79.08', NULL),
-(39, 'Fenobarbital Injeksi I.m/I.v 50 mg/ml', '30 ampul / kotak', '3232', '3300', '102.09', NULL),
-(40, 'Fenobarbital tablet 30 mg', '1000 tablet / botol', '1192636', '1002731', '84.08', NULL),
-(41, 'Fenoksimetil Penisilin tablet 250 mg', '100 tablet / kotak', '6198', '5231', '84.40', NULL),
-(42, 'Fenoksimetil Penisilin tablet 500 mg', '100 tablet / kotak', '15226', '15967', '104.87', NULL),
-(43, 'Fenol Gliserol tetes telinga 10', '24 btl @ 5 ml / kotak', '40016', '43975', '109.89', NULL),
-(44, 'Fitomenadion (Vit. K1) injeksi 10 mg/ml', '30 ampul / kotak', '24604', '28546', '116.02', NULL),
-(45, 'Fitomenadion (Vit. K1) tablet salut gula 10 mg', '100 tablet / botol', '472381', '478442', '101.28', NULL),
-(46, 'Furosemid tablet 40 mg', 'ktk 20 x 10 tablet', '677127', '522191', '77.12', NULL),
-(47, 'Gameksan lotion 1 ', 'Botol 30 ml', '122365', '44602', '36.45', NULL),
-(48, 'Garam Oralit I serbuk Kombinasi : Natrium 0,70 g ,Kalium klorida 0,30 g, Tribatrium Sitrt dihidrat  0,58 g', '100 kantong/kotak tahan lembab', '955648', '1019509', '106.68', NULL),
-(49, 'Gentian Violet Larutan 1 ', 'Botol 10 ml', '641733', '680945', '106.11', NULL),
-(50, 'Glibenklamida tablet 5 mg', '100 tablet / kotak', '1112229', '1314074', '118.15', NULL),
-(51, 'Gliseril Gualakolat tablet 100 mg', '1000 tablet / botol', '7072266', '8801581', '124.45', NULL),
-(52, 'Gliserin', 'btl 100 ml', '18642', '13791', '73.98', NULL),
-(53, 'Glukosa larutan infus 5', 'btl 500 ml', '816656', '970224', '118.80', NULL),
-(54, 'Glukosa larutan infus 10', 'btl 500 ml', '91242', '70167', '76.90', NULL),
-(55, 'Glukosa larutan infus 40 steril (produk lokal)', '10 amp @ 25 ml, kotak', '119281', '9792', '8.21', NULL),
-(56, 'Griseofulvin tablet 125 mg, micronized', 'ktk 10 x 10 tablet', '570545', '594529', '104.20', NULL),
-(57, 'Haloperidol tablet 0,5 mg', 'ktk 10 x 10 tablet', '56605', '67366', '119.01', NULL),
-(58, 'Haloperidol tablet 1,5 mg', 'ktk 10 x 10 tablet', '195500', '235497', '120.46', NULL),
-(59, 'Haloperidol tablet 5 mg', 'ktk 10 x 10 tablet', '118573', '129378', '109.11', NULL),
-(60, 'Hidroklorotiazida tablet 25 mg', '1000 tablet /  botol', '1127295', '1224926', '108.66', NULL),
-(61, 'Hidrkortison krim 2,5', '24 tube @ 5 g / kotak', '247304', '300923', '121.68', NULL),
-(62, 'Ibuprofen tablet 200 mg', '100 tablet / botol', '1237884', '1742772', '140.79', NULL),
-(63, 'Ibuprofen tablet 400 mg', 'ktk 10 x 10 tablet', '1536172', '1784273', '116.15', NULL),
-(64, 'Isosorbid Dinitrat Tablet Sublingual 5 mg', 'ktk 10 x 10 tablet', '164958', '190184', '115.29', NULL),
-(65, 'Kalsium Laktat (Kalk) tablet 500 mg', '1000 tablet / botol', '4896659', '5411069', '110.51', NULL),
-(66, 'Kaptopril tablet 12,5 mg', 'ktk 10 x 10 tablet', '1416484', '1404339', '99.14', NULL),
-(67, 'Kaptopril tablet 25 mg', 'ktk 10 x 10 tablet', '3271457', '3961213', '121.08', NULL),
-(68, 'Karbamazepim tablet 200 mg', 'ktk 10 x 10 tablet', '92643', '109323', '118.00', NULL),
-(69, 'Ketamin Injeksi 10 mg/ml', '10 vial @ 20 ml, kotak', '2503', '2029', '81.06', NULL),
-(70, 'Klofazimin kapsul 100 mg microzine', '100 kapsul / botol', '5130', '6712', '130.83', NULL),
-(71, 'Kloramfenikol kapsul 250 mg', '250 kapsul / botol', '1812068', '1767577', '97.54', NULL),
-(72, 'Kloramfenikol tetes telinga 3 ', '24 botol @ 5 ml / kotak', '219758', '211367', '96.18', NULL);
+INSERT INTO `data_hasilpanen` (`no_hasilpanen`, `no_spta`, `nomor_petak`, `bruto`, `tara`, `netto`, `tgl_timbang`) VALUES
+(1, 'BP06-01032022-0316', '21KB0105', 9190, 3290, 5900, '2022-03-01 11:21:00'),
+(2, 'BP06-01032022-0319', '21KB0105', 8990, 3270, 5720, '2022-03-01 14:13:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_kebun`
+--
+
+CREATE TABLE `data_kebun` (
+  `no` int(5) NOT NULL,
+  `nomor_petak` varchar(32) NOT NULL,
+  `nama_kebun` varchar(127) NOT NULL,
+  `blok` varchar(3) NOT NULL,
+  `luas` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_kebun`
+--
+
+INSERT INTO `data_kebun` (`no`, `nomor_petak`, `nama_kebun`, `blok`, `luas`) VALUES
+(1, '21KB0105', 'Ryn KWM, DP02,MT 3B,TT R2, BLOK 105', 'R2', 0.1),
+(2, '21KB0108', 'Ryn KWM, DP02,MT 3B,TT R2, BLOK 108', 'R2', 0.1);
 
 -- --------------------------------------------------------
 
@@ -359,37 +311,6 @@ INSERT INTO `data_penyakit` (`no_penyakit`, `nama_penyakit`, `no`) VALUES
 (98, 'Peny.lain pada saluran pernafasan bawah', 0),
 (120, 'Tulang Keropos', 65),
 (121, 'Paru-Paru Kronis', 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `data_puskesmas`
---
-
-CREATE TABLE `data_puskesmas` (
-  `no_puskesmas` int(5) NOT NULL,
-  `nama_puskesmas` varchar(28) NOT NULL,
-  `jumlah_pasien_total` int(10) NOT NULL,
-  `ketersediaan_obat_total` int(10) NOT NULL,
-  `jumlah_fasilitas_total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `data_puskesmas`
---
-
-INSERT INTO `data_puskesmas` (`no_puskesmas`, `nama_puskesmas`, `jumlah_pasien_total`, `ketersediaan_obat_total`, `jumlah_fasilitas_total`) VALUES
-(1, 'Puskesmas Batoh', 98, 90, 80),
-(11, 'Puskesmas Meuraxa', 20, 65, 60),
-(21, 'Puskesmas Ulee Kareng', 50, 20, 45),
-(31, 'Puskesmas Jaya Baru', 40, 40, 80),
-(41, 'Puskesmas Lampaseh Kota', 85, 86, 80),
-(51, 'Puskesmas Kopelma Darussalam', 40, 50, 73),
-(61, 'Puskesmas Baiturrahman', 50, 40, 73),
-(71, 'Puskesmas Kuta Alam', 30, 60, 45),
-(81, 'Puskesmas Lampulo', 40, 50, 77),
-(92, 'Puskesmas Banda Raya', 40, 75, 80),
-(102, 'Puskesmas Jeulingke', 10, 60, 80);
 
 -- --------------------------------------------------------
 
@@ -8693,9 +8614,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`, `nama`) VALUES
-(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'Sofyan Setiawan'),
-(2, 'pimpinan', '59335c9f58c78597ff73f6706c6c8fa278e08b3a', 2, 'Setiawan'),
-(3, 'supplier', 'e2979e759574b094b7c50f54846af43ef8eff1a0', 3, 'Juniordev');
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'Zarwin Admin'),
+(2, 'pimpinan', '59335c9f58c78597ff73f6706c6c8fa278e08b3a', 2, 'Muhammad Zarwin'),
+(3, 'supplier', 'e2979e759574b094b7c50f54846af43ef8eff1a0', 3, 'Zarwin Supplier');
 
 --
 -- Indexes for dumped tables
@@ -8720,9 +8641,15 @@ ALTER TABLE `data_fasilitas`
   ADD PRIMARY KEY (`no_fasilitas`);
 
 --
--- Indexes for table `data_obat`
+-- Indexes for table `data_hasilpanen`
 --
-ALTER TABLE `data_obat`
+ALTER TABLE `data_hasilpanen`
+  ADD PRIMARY KEY (`no_hasilpanen`);
+
+--
+-- Indexes for table `data_kebun`
+--
+ALTER TABLE `data_kebun`
   ADD PRIMARY KEY (`no`);
 
 --
@@ -8736,12 +8663,6 @@ ALTER TABLE `data_pasien`
 --
 ALTER TABLE `data_penyakit`
   ADD PRIMARY KEY (`no_penyakit`);
-
---
--- Indexes for table `data_puskesmas`
---
-ALTER TABLE `data_puskesmas`
-  ADD PRIMARY KEY (`no_puskesmas`);
 
 --
 -- Indexes for table `data_tahun`
@@ -8814,10 +8735,16 @@ ALTER TABLE `data_fasilitas`
   MODIFY `no_fasilitas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT for table `data_obat`
+-- AUTO_INCREMENT for table `data_hasilpanen`
 --
-ALTER TABLE `data_obat`
-  MODIFY `no` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+ALTER TABLE `data_hasilpanen`
+  MODIFY `no_hasilpanen` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `data_kebun`
+--
+ALTER TABLE `data_kebun`
+  MODIFY `no` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `data_pasien`
@@ -8830,12 +8757,6 @@ ALTER TABLE `data_pasien`
 --
 ALTER TABLE `data_penyakit`
   MODIFY `no_penyakit` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
-
---
--- AUTO_INCREMENT for table `data_puskesmas`
---
-ALTER TABLE `data_puskesmas`
-  MODIFY `no_puskesmas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `data_tahun`

@@ -48,17 +48,17 @@ $route['administrasi/dashboard']	= 'administrasi';
 $route['administrasi/logout']	= 'administrasi/logout';
 
 
-$route['administrasi/data_obat']	= 'administrasi/data_obat_view';
-$route['administrasi/data_obat/add'] = 'administrasi/data_obat_add';
-$route['administrasi/data_obat/save'] = 'administrasi/data_obat_save';
-$route['administrasi/data_obat/edit/(:num)'] = 'administrasi/data_obat_edit/$1';
-$route['administrasi/data_obat/del/(:num)'] = 'administrasi/data_obat_del/$1';
+$route['administrasi/data_kebun']	= 'administrasi/data_kebun_view';
+$route['administrasi/data_kebun/add'] = 'administrasi/data_kebun_add';
+$route['administrasi/data_kebun/save'] = 'administrasi/data_kebun_save';
+$route['administrasi/data_kebun/edit/(:num)'] = 'administrasi/data_kebun_edit/$1';
+$route['administrasi/data_kebun/del/(:num)'] = 'administrasi/data_kebun_del/$1';
 
-$route['administrasi/data_penyakit']	= 'administrasi/data_penyakit_view';
-$route['administrasi/data_penyakit/add'] = 'administrasi/data_penyakit_add';
-$route['administrasi/data_penyakit/save'] = 'administrasi/data_penyakit_save';
-$route['administrasi/data_penyakit/edit/(:num)'] = 'administrasi/data_penyakit_edit/$1';
-$route['administrasi/data_penyakit/del/(:num)'] = 'administrasi/data_penyakit_del/$1';
+$route['administrasi/data_hasilpanen']	= 'administrasi/data_hasilpanen_view';
+$route['administrasi/data_hasilpanen/add'] = 'administrasi/data_hasilpanen_add';
+$route['administrasi/data_hasilpanen/save'] = 'administrasi/data_hasilpanen_save';
+$route['administrasi/data_hasilpanen/edit/(:num)'] = 'administrasi/data_hasilpanen_edit/$1';
+$route['administrasi/data_hasilpanen/del/(:num)'] = 'administrasi/data_hasilpanen_del/$1';
 
 $route['administrasi/data_puskesmas']	= 'administrasi/data_puskesmas_view';
 $route['administrasi/data_puskesmas/add'] = 'administrasi/data_puskesmas_add';
