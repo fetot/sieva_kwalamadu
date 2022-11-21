@@ -100,14 +100,10 @@ $route['administrasi/data_jumlah_obat_puskesmas/del/(:num)'] = 'administrasi/dat
 $route['pimpinan/dashboard']	= 'pimpinan';
 $route['pimpinan/logout']	= 'pimpinan/logout';
 
-$route['pimpinan/cetak_obat']	= 'pimpinan/cetak_obat';
-$route['pimpinan/cetak_obat/view']	= 'pimpinan/cetak_obat_view';
-$route['pimpinan/cetak_puskesmas']	= 'pimpinan/cetak_puskesmas';
-$route['pimpinan/cetak_puskesmas/view']	= 'pimpinan/cetak_puskesmas_view';
-$route['pimpinan/cetak_penyakit']	= 'pimpinan/cetak_penyakit';
-$route['pimpinan/cetak_penyakit/view']	= 'pimpinan/cetak_penyakit_view';
-$route['pimpinan/cetak_penyakit_tahun']	= 'pimpinan/cetak_penyakit_tahun';
-$route['pimpinan/cetak_penyakit_tahun/view/(:num)']	= 'pimpinan/cetak_penyakit_tahun/$1';
+$route['pimpinan/cetak_kebun']	= 'pimpinan/cetak_kebun';
+$route['pimpinan/cetak_kebun/view']	= 'pimpinan/cetak_kebun_view';
+$route['pimpinan/cetak_hasilpanen']	= 'pimpinan/cetak_hasilpanen';
+$route['pimpinan/cetak_hasilpanen/view']	= 'pimpinan/cetak_hasilpanen_view';
 
 $route['supplier/dashboard']	= 'supplier';
 $route['supplier/generate_awal']	= 'supplier/generate_awal';

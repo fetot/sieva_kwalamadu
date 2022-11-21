@@ -33,7 +33,7 @@
           </div>
           <div class="table-responsive">
             <table id="table_data" class="table table-bordered table-striped table-admin">
-            <thead><tr><th>No</th><th>Nomor Petak</th><th>Kebun</th><th>Blok</th><th>Luas (Hektar)</th></tr></thead>
+            <thead><tr><th>No</th><th>Nomor Petak</th><th>Kebun</th><th>Blok</th><th>Luas (Hektar)</th><th>Aksi</th></tr></thead>
             <tbody>
             <?php foreach ($data_kebun as $o): ?>    
             <tr>
@@ -45,7 +45,8 @@
             <td>
             <p><a href="<?=base_url();?>administrasi/data_kebun/edit/<?=$o['no'] ?>" class="btn btn-success" rel="tooltip" data-original-title="Mengubah data pada baris ini" data-placement="top"><i class="fa fa-pencil"></i> Edit</a></p>
 
-            <p><a href="<?=base_url();?>administrasi/data_kebun/del/<?=$o['no'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?')" class="btn btn-danger " rel="tooltip" data-original-title="Menghapus Data pada baris ini" data-placement="top"><i class="fa fa-trash-o"></i> Hapus</a></p></td>
+            <p><a href="<?=base_url();?>administrasi/data_kebun/del/<?=$o['no'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?')" class="btn btn-danger " rel="tooltip" data-original-title="Menghapus Data pada baris ini" data-placement="top"><i class="fa fa-trash-o"></i> Hapus</a></p>
+            </td>
             </tr>
             <?php endforeach ?>
             </tbody>

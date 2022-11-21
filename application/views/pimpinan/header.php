@@ -38,10 +38,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-th-list"></i> Laporan <i class="fa fa-caret-down"></i></a>
               <ul class="dropdown-menu tipe-kiri dropdown-menu-login2">
-                <li><a href="<?php echo base_url(); ?>pimpinan/cetak_penyakit_tahun"><i class="fa fa-tags"></i> Cetak Laporan Per Tahun</a></li>
-                <li><a href="<?php echo base_url(); ?>pimpinan/cetak_obat"><i class="fa fa-tags"></i> Cetak Data Obat</a></li>
-                <li><a href="<?php echo base_url(); ?>pimpinan/cetak_puskesmas"><i class="fa fa-tags"></i> Cetak Data Puskesmas</a></li>
-                <li><a href="<?php echo base_url(); ?>pimpinan/cetak_penyakit"><i class="fa fa-tags"></i> Cetak Data Penyakit</a></li>
+                <li><a href="<?php echo base_url(); ?>pimpinan/cetak_kebun"><i class="fa fa-tags"></i> Cetak Data Kebun</a></li>
+                <li><a href="<?php echo base_url(); ?>pimpinan/cetak_hasilpanen"><i class="fa fa-tags"></i> Cetak Data Hasil Panen</a></li>
               </ul>
             </li>
             
