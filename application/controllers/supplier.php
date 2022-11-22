@@ -54,13 +54,13 @@ class Supplier extends CI_Controller {
 			$this->load->model('model');
 			
 
-			$data_puskesmas = $this->suppliermodel->selectdata('data_puskesmas');
+			$data_hasilpanen = $this->suppliermodel->selectdata('data_hasilpanen LEFT JOIN data_kebun on data_hasilpanen.nomor_petak=data_kebun.nomor_petak');
 			
 
 			$data = array(
-				'title'			=> '.:: Selamat Datang Supplier ::. ',
+				'title'			=> 'Selamat Datang Supplier',
 				'nama'			=> $sesinya['nama'],
-				'data_puskesmas'=> $data_puskesmas,
+				'data_hasilpanen'=> $data_hasilpanen,
 				'titlesistem'	=> $this->model->getTitle(),
 			);
 
@@ -71,7 +71,6 @@ class Supplier extends CI_Controller {
 		}
 	}
 
-
 	function generate_rata(){
 
 		$sesinya	= $this->session->userdata('login');
@@ -81,34 +80,35 @@ class Supplier extends CI_Controller {
 
 		}
 		else {
-		
-		$data_puskesmas = $this->db->get('data_puskesmas');
+		$data_hasilpanen = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto 
+		FROM data_hasilpanen INNER JOIN data_kebun ON data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
 		$v = "";
-		if(count($data_puskesmas->result())<0)
+		if(count($data_hasilpanen->result())<0)
 		{
-			$nilai = floor(($s->jumlah_pasien_total+$s->ketersediaan_obat_total+$s->jumlah_fasilitas_total)/3);
-			$v = "insert into rata_rata (no_puskesmas,rata_rata) values ('".$s->no_puskesmas."','".$nilai."')";
+			$nilai = $s->avgnetto;
+			$v = "insert into rata_rata (nomor_petak,rata_rata) values ('".$s->nomor_petak."','".$nilai."')";
 			$this->db->query($v);
 		}
 		else
 		{
 			$this->db->query('truncate table rata_rata');
-			foreach($data_puskesmas->result() as $s)
+			foreach($data_hasilpanen->result() as $s)
 			{
-				$nilai = floor(($s->jumlah_pasien_total+$s->ketersediaan_obat_total+$s->jumlah_fasilitas_total)/3);
-				$v = "insert into rata_rata (no_puskesmas,rata_rata) values ('".$s->no_puskesmas."','".$nilai."')";
+				$nilai = $s->avgnetto;
+				$v = "insert into rata_rata (nomor_petak,rata_rata) values ('".$s->nomor_petak."','".$nilai."')";
 				$this->db->query($v);
 			}
 		}
 		
 			$data = array(
-				'title'			=> '.:: Selamat Datang Supplier ::. ',
+				'title'			=> 'Selamat Datang Supplier',
 				'nama'			=> $sesinya['nama'],
 				'titlesistem'	=> $this->model->getTitle(),
 			);
 
 
-		$data['data_puskesmas'] = $this->db->query('select * from data_puskesmas left join rata_rata on data_puskesmas.no_puskesmas=rata_rata.no_puskesmas');
+		$data['data_hasilpanen'] = $this->db->query('select * from data_hasilpanen inner join data_kebun on data_hasilpanen.nomor_petak = data_kebun.nomor_petak 
+		inner join rata_rata on data_hasilpanen.nomor_petak=rata_rata.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
 
 		$this->load->view('supplier/header',$data);
 		$this->load->view('supplier/generate_rata');
@@ -128,7 +128,7 @@ class Supplier extends CI_Controller {
 		else {
 
 			$data = array(
-				'title'			=> '.:: Selamat Datang Supplier ::. ',
+				'title'			=> 'Selamat Datang Supplier',
 				'nama'			=> $sesinya['nama'],
 				'titlesistem'	=> $this->model->getTitle(),
 		);
