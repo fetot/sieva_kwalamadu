@@ -2,6 +2,7 @@
       <div class="row">
         <div class="col-md-12">
           <h1>Data Nilai Rata-Rata</h1>
+          <p>Netto didapat dari hasil perhitungan Bruto dikurang Tara.</br>Rata-rata Netto didapatkan dari hasil perhitungan rata-rata netto per nomor petak atau kebun.</p>
 
           <div id="body">
           <a class="btn btn-primary" href="<?php echo base_url(); ?>supplier/generate_centroid">Proses Data Akhir</a><br><br>

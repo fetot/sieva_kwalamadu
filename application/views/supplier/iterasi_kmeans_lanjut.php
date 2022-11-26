@@ -59,28 +59,28 @@
             ?>
             <div class="table-responsive">
             <table  id="table_data" class="table table-bordered table-admin">
-              <tr align="center"><td rowspan="2">No Puskesmas</td><td rowspan="2">Nama Puskesmas</td><td rowspan="2">Jumlah Pasien Total</td><td rowspan="2">Ketersedian Obat</td><td rowspan="2">Jumlah Fasilitas</td>
-              <td colspan="3">Centroid 1</td><td colspan="3">Centroid 2</td><td colspan="3">Centroid 3</td><td rowspan="2" width="30">C1</td><td rowspan="2" width="30">C2</td><td rowspan="2" width="30">C3</td>
+            <tr align="center"><td rowspan="2">Nomor Petak</td><td rowspan="2">Kebun</td><td rowspan="2">Luas (Hektar)</td><td rowspan="2">Rata-rata Netto (Kg)</td>
+              <td colspan="3">Centroid 1</td><td colspan="3">Centroid 2</td><td colspan="3">Centroid 3</td><td rowspan="2">C1</td><td rowspan="2">C2</td><td rowspan="2">C3</td>
               </tr>
               <tr align="center">
-              <td><?php echo $c1a; ?></td><td><?php echo $c1b; ?></td><td><?php echo $c1c; ?></td>
-              <td><?php echo $c2a; ?></td><td><?php echo $c2b; ?></td><td><?php echo $c2c; ?></td>
-              <td><?php echo $c3a; ?></td><td><?php echo $c3b; ?></td><td><?php echo $c3c; ?></td>
+              <td><?php echo round($c1a, 4); ?></td><td><?php echo round($c1b, 4); ?></td><td><?php echo round($c1c, 4); ?></td>
+              <td><?php echo round($c2a, 4); ?></td><td><?php echo round($c2b, 4); ?></td><td><?php echo round($c2c, 4); ?></td>
+              <td><?php echo round($c3a, 4); ?></td><td><?php echo round($c3b, 4); ?></td><td><?php echo round($c3c, 4); ?></td>
               </tr>
               <?php 
-              foreach($data_puskesmas->result_array() as $s){ ?>
-              <tr><td><?php echo $s['no_puskesmas']; ?></td><td><?php echo $s['nama_puskesmas']; ?></td><td><?php echo $s['jumlah_pasien_total']; ?></td><td><?php echo $s['ketersediaan_obat_total']; ?></td><td><?php echo $s['jumlah_fasilitas_total']; ?></td>
+              foreach($data_hasilpanen->result_array() as $s){ ?>
+              <tr><td><?php echo $s['nomor_petak']; ?></td><td><?php echo $s['nama_kebun']; ?></td><td><?php echo $s['luas']; ?></td><td><?php echo round($s['avgnetto'], 0); ?></td>
               
               <td colspan="3"><?php 
-                $hc1 = sqrt(pow(($s['jumlah_pasien_total']-$c1a),2)+pow(($s['ketersediaan_obat_total']-$c1b),2)+pow(($s['jumlah_fasilitas_total']-$c1c),2));
+                $hc1 = sqrt(pow(($s['luas']-$c1a),2)+pow(($s['avgnetto']-$c1b),2)+pow(($s['jumlahpanen']-$c1c),2));
                 echo $hc1;
               ?></td>
               <td colspan="3"><?php 
-                $hc2 = sqrt(pow(($s['jumlah_pasien_total']-$c2a),2)+pow(($s['ketersediaan_obat_total']-$c2b),2)+pow(($s['jumlah_fasilitas_total']-$c2c),2));
+                $hc2 = sqrt(pow(($s['luas']-$c2a),2)+pow(($s['avgnetto']-$c2b),2)+pow(($s['jumlahpanen']-$c2c),2));
                 echo $hc2;
               ?></td>
               <td colspan="3"><?php 
-                $hc3 = sqrt(pow(($s['jumlah_pasien_total']-$c3a),2)+pow(($s['ketersediaan_obat_total']-$c3b),2)+pow(($s['jumlah_fasilitas_total']-$c3c),2));
+                $hc3 = sqrt(pow(($s['luas']-$c3a),2)+pow(($s['avgnetto']-$c3b),2)+pow(($s['jumlahpanen']-$c3c),2));
                 echo $hc3;
               ?></td>
               <?php 

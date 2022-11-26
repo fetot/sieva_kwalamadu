@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@fetot 
+fetot
+/
+sieva_kwalamadu
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+sieva_kwalamadu/application/controllers/supplier.php /
+@fetot
+fetot generate rata-rata
+Latest commit 61214fe 3 days ago
+ History
+ 2 contributors
+@sofyansetiawan@fetot
+339 lines (264 sloc)  8.72 KB
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Supplier extends CI_Controller {
@@ -133,50 +164,30 @@ class Supplier extends CI_Controller {
 				'titlesistem'	=> $this->model->getTitle(),
 		);
 		
-		$kluster = 3;
-		//C1 (MAX) = Baik
-		//C2 (MEDIAN) = Cukup
-		//C3 (MIN) = Kurang
-
-		$data_hasilpanen = $this->db->query('SELECT MAX(netto) as maxnet, MIN(netto) as minnet FROM data_hasilpanen');
-		if(count($data_hasilpanen->result())>0)
-		{
-			foreach($data_hasilpanen->result_array() as $row)
-			{
-				$maxnetto = $row['maxnet'];
-				$minnetto = $row['minnet'];
-			}
-		}
-
-		$data_hasilpanen = $this->db->query('SELECT AVG(netto) as mediannet
-		FROM (
-		SELECT netto, @rownum:=@rownum+1 as `row_number`, @total_rows:=@rownum
-		  FROM data_hasilpanen, (SELECT @rownum:=0) r
-		  WHERE netto is NOT NULL
-		  ORDER BY netto
-		) as dd
-		WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) )');
-		if(count($data_hasilpanen->result())>0)
-		{
-			foreach($data_hasilpanen->result_array() as $row)
-			{
-				$mediannetto = round($row['mediannet'], 0);
-			}
-		}
-
-		$data['c1'] = $maxnetto;
-		$data['c2'] = $mediannetto;
-		$data['c3'] = $minnetto;
-		$data_hasilpanen = $this->db->query('select * from data_hasilpanen left join rata_rata on data_hasilpanen.nomor_petak=rata_rata.nomor_petak');
+		$kluster = 5;
+		//81-100 = sangat baik
+		//70-80 = baik
+		//60-69 = cukup
+		//40-59 = kurang
+		//0-39 = kurang sekali
+		$data['c1'] = rand(81,100);
+		$data['c2'] = rand(70,80);
+		$data['c3'] = rand(60,69);
+		$data['c4'] = rand(40,59);
+		$data['c5'] = rand(0,39);
+		$data_puskesmas = $this->db->query('select * from data_puskesmas left join rata_rata on data_puskesmas.no_puskesmas=rata_rata.no_puskesmas');
 		$st = "";
 		
 		$this->db->query('truncate table hasil');
-		foreach($data_hasilpanen->result() as $s)
+		foreach($data_puskesmas->result() as $s)
 		{
-			$d1 = abs($s->rata_rata-$data['c1']); 
-			$d2 = abs($s->rata_rata-$data['c2']);
+			$d1 = abs($s->rata_rata-$data['c1']); //96-90 = 6
+			$d2 = abs($s->rata_rata-$data['c2']); // 78 - 75 = 3
 			$d3 = abs($s->rata_rata-$data['c3']);
-			$array_sort_awal = array($d1,$d2,$d3);
+			$d4 = abs($s->rata_rata-$data['c4']);
+			$d5 = abs($s->rata_rata-$data['c5']);
+			
+			$array_sort_awal = array($d1,$d2,$d3,$d4,$d5);
 			$array_sort = $array_sort_awal;
 			for ($j=1;$j<=$kluster-1;$j++){//1 4 --> 2
 				for ($k=0;$k<=$kluster-2;$k++) {//0 2 --> 1
@@ -193,16 +204,20 @@ class Supplier extends CI_Controller {
 				{
 					if($array_sort[0]==$array_sort_awal[$r])
 					{
-						if($r==0) $st =  "Baik";
-						else if($r==1) $st =  "Cukup";
-						else if($r==2) $st =  "Kurang";
+						if($r==0) $st =  "Sangat Baik";
+						else if($r==1) $st =  "Baik";
+						else if($r==2) $st =  "Cukup";
+						else if($r==3) $st =  "Kurang";
+						else if($r==4) $st =  "Kurang Sekali";
 					}
 				}
 			}
-			$this->db->query("insert into hasil (nomor_petak,predikat,d1,d2,d3) values('".$s->nomor_petak."','".$st."','".$d1."','".$d2."','".$d3."')");
+			$this->db->query("insert into hasil (no_puskesmas,predikat,d1,d2,d3,d4,d5) values('".$s->no_puskesmas."','".$st."','".$d1."','".$d2."','".$d3."','".$d4."','".$d5."')");
 		}
 
-		$data['data_hasilpanen'] = $this->db->query("select * from data_hasilpanen left join (data_kebun,rata_rata,hasil) on data_hasilpanen.nomor_petak=rata_rata.nomor_petak and data_hasilpanen.nomor_petak=data_kebun.nomor_petak and data_hasilpanen.nomor_petak=hasil.nomor_petak group by data_hasilpanen.nomor_petak");
+		
+
+		$data['data_puskesmas'] = $this->db->query("select * from data_puskesmas left join (rata_rata,hasil) on data_puskesmas.no_puskesmas=rata_rata.no_puskesmas and data_puskesmas.no_puskesmas=hasil.no_puskesmas");
 
 		$this->load->view('supplier/header',$data);
 		$this->load->view('supplier/generate_centroid');
@@ -221,21 +236,13 @@ class Supplier extends CI_Controller {
 			$this->load->model('model');
 			
 
-			$data_hasilpanen = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto, COUNT(data_hasilpanen.netto) AS jumlahpanen, MAX(data_hasilpanen.netto) as maxnet, MIN(data_hasilpanen.netto) as minnet
-			FROM data_hasilpanen INNER JOIN data_kebun ON data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
-			if(count($data_hasilpanen->result())>0)
-			{
-				foreach($data_hasilpanen->result_array() as $row)
-				{
-					$maxnetto = $row['maxnet'];
-					$minnetto = $row['minnet'];
-				}
-			}
+			$data_puskesmas = $this->suppliermodel->selectdata('data_puskesmas');
+			
 
 			$data = array(
-				'title'			=> 'Selamat Datang Supplier',
+				'title'			=> '.:: Selamat Datang Supplier ::. ',
 				'nama'			=> $sesinya['nama'],
-				'data_hasilpanen'=> $data_hasilpanen,
+				'data_puskesmas'=> $data_puskesmas,
 				'titlesistem'	=> $this->model->getTitle(),
 			);
 
@@ -256,21 +263,12 @@ class Supplier extends CI_Controller {
 		}
 		else {
 		$data = array(
-			'title'			=> 'Selamat Datang Supplier',
+			'title'			=> '.:: Selamat Datang Supplier ::. ',
 			'nama'			=> $sesinya['nama'],
 			'titlesistem'	=> $this->model->getTitle(),
 		);
 			
-		$data['data_hasilpanen'] = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto, COUNT(data_hasilpanen.netto) AS jumlahpanen, MAX(data_hasilpanen.netto) as maxnet, MIN(data_hasilpanen.netto) as minnet
-		FROM data_hasilpanen INNER JOIN data_kebun ON data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
-		if(count($data['data_hasilpanen']->result())>0)
-		{
-			foreach($data['data_hasilpanen']->result_array() as $row)
-			{
-				$maxnetto = $row['maxnet'];
-				$minnetto = $row['minnet'];
-			}
-		}
+		$data['data_puskesmas'] = $this->db->get('data_puskesmas');
 		$id = "";
 		$id = $this->db->query('select max(nomor) as m from hasil_centroid');
 		foreach($id->result() as $i)
@@ -293,7 +291,7 @@ class Supplier extends CI_Controller {
 		$it_sebelum = $this->db->get('centroid_temp');
 		$c1_sebelum = array();
 		$c2_sebelum = array();
-		$c3_sebelum = array();
+		$c2_sebelum = array();
 		$no=0;
 		foreach($it_sebelum->result() as $it_prev)
 		{
@@ -307,7 +305,7 @@ class Supplier extends CI_Controller {
 		$it_sesesudah = $this->db->get('centroid_temp');
 		$c1_sesesudah = array();
 		$c2_sesesudah = array();
-		$c3_sesesudah = array();
+		$c2_sesesudah = array();
 		$no=0;
 		foreach($it_sesesudah->result() as $it_next)
 		{
@@ -317,7 +315,7 @@ class Supplier extends CI_Controller {
 			$no++;
 		}
 		
-		if($c1_sebelum==$c1_sesesudah || $c2_sebelum==$c2_sesesudah || $c3_sebelum==$c3_sesesudah)
+		if($c1_sebelum==$c1_sesesudah || $c2_sebelum==$c2_sesesudah || $c2_sebelum==$c2_sesesudah)
 		{
 			?>
 				<script>
@@ -346,10 +344,10 @@ class Supplier extends CI_Controller {
 		}
 		else {
 
-			$data_hasil = $this->suppliermodel->selectdata('hasil INNER JOIN data_hasilpanen on hasil.nomor_petak = data_hasilpanen.nomor_petak order by d3 DESC');
+			$data_hasil = $this->suppliermodel->selectdata('hasil INNER JOIN data_puskesmas on hasil.no_puskesmas = data_puskesmas.no_puskesmas order by d5 DESC');
 
 			$data = array(
-				'title'			=> 'Selamat Datang Supplier',
+				'title'			=> '.:: Selamat Datang Supplier ::. ',
 				'nama'			=> $sesinya['nama'],
 				'titlesistem'	=> $this->model->getTitle(),
 				'data_hasil'	=> $data_hasil,

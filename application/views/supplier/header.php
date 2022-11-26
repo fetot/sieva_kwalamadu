@@ -34,7 +34,7 @@
         
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="<?php echo base_url();?>pimpinan/dashboard"><i class="fa fa-home"></i> Beranda</a></li>
+            <li><a href="<?php echo base_url();?>supplier/dashboard"><i class="fa fa-home"></i> Beranda</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-th-list"></i> Analisa Data <i class="fa fa-caret-down"></i></a>
               <ul class="dropdown-menu tipe-kiri dropdown-menu-login2">
