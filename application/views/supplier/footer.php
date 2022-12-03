@@ -7,11 +7,6 @@
           <?php foreach ($titlesistem as $t): ?>
             <h3 class="white"><?php echo $t['title']?></h3>             
           <?php endforeach ?>
-          <ul class="list-inline">
-            <li><a href="halaman_depan.html" class="link-footer">Beranda</a></li>
-            <li><a href="petunjuk_penggunaan.html" class="link-footer">Petunjuk Penggunaan</a></li>
-            <li><a href="tentang.html" class="link-footer">Tentang</a></li>
-          </ul>
           <h5 class="white">Copyright &copy; <?php echo date("Y")?></h5>
         </div>
       </div>

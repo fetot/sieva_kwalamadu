@@ -134,39 +134,12 @@ class Supplier extends CI_Controller {
 		);
 		
 		$kluster = 3;
-		//C1 (MAX) = Baik
-		//C2 (MEDIAN) = Cukup
-		//C3 (MIN) = Kurang
-
-		$data_hasilpanen = $this->db->query('SELECT MAX(netto) as maxnet, MIN(netto) as minnet FROM data_hasilpanen');
-		if(count($data_hasilpanen->result())>0)
-		{
-			foreach($data_hasilpanen->result_array() as $row)
-			{
-				$maxnetto = $row['maxnet'];
-				$minnetto = $row['minnet'];
-			}
-		}
-
-		$data_hasilpanen = $this->db->query('SELECT AVG(netto) as mediannet
-		FROM (
-		SELECT netto, @rownum:=@rownum+1 as `row_number`, @total_rows:=@rownum
-		  FROM data_hasilpanen, (SELECT @rownum:=0) r
-		  WHERE netto is NOT NULL
-		  ORDER BY netto
-		) as dd
-		WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) )');
-		if(count($data_hasilpanen->result())>0)
-		{
-			foreach($data_hasilpanen->result_array() as $row)
-			{
-				$mediannetto = round($row['mediannet'], 0);
-			}
-		}
-
-		$data['c1'] = $maxnetto;
-		$data['c2'] = $mediannetto;
-		$data['c3'] = $minnetto;
+		//C1 = Baik
+		//C2 = Cukup
+		//C3 = Kurang
+		$data['c1'] = 5800;
+		$data['c2'] = 5200;
+		$data['c3'] = 4600;
 		$data_hasilpanen = $this->db->query('select * from data_hasilpanen left join rata_rata on data_hasilpanen.nomor_petak=rata_rata.nomor_petak');
 		$st = "";
 		
@@ -220,8 +193,23 @@ class Supplier extends CI_Controller {
 		else {
 			$this->load->model('model');
 			
+			$data_hasilpanen = $this->db->query('SELECT AVG(netto) as mediannet
+		FROM (
+		SELECT netto, @rownum:=@rownum+1 as `row_number`, @total_rows:=@rownum
+		  FROM data_hasilpanen, (SELECT @rownum:=0) r
+		  WHERE netto is NOT NULL
+		  ORDER BY netto
+		) as dd
+		WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) )');
+		if(count($data_hasilpanen->result())>0)
+		{
+			foreach($data_hasilpanen->result_array() as $row)
+			{
+				$mediannetto = round($row['mediannet'], 0);
+			}
+		}
 
-			$data_hasilpanen = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto, COUNT(data_hasilpanen.netto) AS jumlahpanen, MAX(data_hasilpanen.netto) as maxnet, MIN(data_hasilpanen.netto) as minnet
+			$data_hasilpanen = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto, COUNT(netto) AS jumlahpanen, MAX(data_hasilpanen.netto) as maxnet, MIN(data_hasilpanen.netto) as minnet
 			FROM data_hasilpanen INNER JOIN data_kebun ON data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
 			if(count($data_hasilpanen->result())>0)
 			{
@@ -346,7 +334,7 @@ class Supplier extends CI_Controller {
 		}
 		else {
 
-			$data_hasil = $this->suppliermodel->selectdata('hasil INNER JOIN data_hasilpanen on hasil.nomor_petak = data_hasilpanen.nomor_petak order by d3 DESC');
+			$data_hasil = $this->db->query('SELECT * FROM hasil INNER JOIN data_hasilpanen on hasil.nomor_petak = data_hasilpanen.nomor_petak INNER JOIN data_kebun on data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak order by predikat');
 
 			$data = array(
 				'title'			=> 'Selamat Datang Supplier',

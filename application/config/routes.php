@@ -47,7 +47,6 @@ $route['tentang'] = 'halaman_depan/tentang';
 $route['administrasi/dashboard']	= 'administrasi';
 $route['administrasi/logout']	= 'administrasi/logout';
 
-
 $route['administrasi/data_kebun']	= 'administrasi/data_kebun_view';
 $route['administrasi/data_kebun/add'] = 'administrasi/data_kebun_add';
 $route['administrasi/data_kebun/save'] = 'administrasi/data_kebun_save';
@@ -59,43 +58,6 @@ $route['administrasi/data_hasilpanen/add'] = 'administrasi/data_hasilpanen_add';
 $route['administrasi/data_hasilpanen/save'] = 'administrasi/data_hasilpanen_save';
 $route['administrasi/data_hasilpanen/edit/(:num)'] = 'administrasi/data_hasilpanen_edit/$1';
 $route['administrasi/data_hasilpanen/del/(:num)'] = 'administrasi/data_hasilpanen_del/$1';
-
-$route['administrasi/data_puskesmas']	= 'administrasi/data_puskesmas_view';
-$route['administrasi/data_puskesmas/add'] = 'administrasi/data_puskesmas_add';
-$route['administrasi/data_puskesmas/save'] = 'administrasi/data_puskesmas_save';
-$route['administrasi/data_puskesmas/edit/(:num)'] = 'administrasi/data_puskesmas_edit/$1';
-$route['administrasi/data_puskesmas/del/(:num)'] = 'administrasi/data_puskesmas_del/$1';
-
-$route['administrasi/data_tahun']	= 'administrasi/data_tahun_view';
-$route['administrasi/data_tahun/add'] = 'administrasi/data_tahun_add';
-$route['administrasi/data_tahun/save'] = 'administrasi/data_tahun_save';
-$route['administrasi/data_tahun/edit/(:num)'] = 'administrasi/data_tahun_edit/$1';
-$route['administrasi/data_tahun/del/(:num)'] = 'administrasi/data_tahun_del/$1';
-
-$route['administrasi/data_fasilitas']	= 'administrasi/data_fasilitas_view';
-$route['administrasi/data_fasilitas/add'] = 'administrasi/data_fasilitas_add';
-$route['administrasi/data_fasilitas/save'] = 'administrasi/data_fasilitas_save';
-$route['administrasi/data_fasilitas/edit/(:num)'] = 'administrasi/data_fasilitas_edit/$1';
-$route['administrasi/data_fasilitas/del/(:num)'] = 'administrasi/data_fasilitas_del/$1';
-
-$route['administrasi/data_jumlah_penyakit_puskesmas']	= 'administrasi/data_jumlah_penyakit_puskesmas_view';
-$route['administrasi/data_jumlah_penyakit_puskesmas/add'] = 'administrasi/data_jumlah_penyakit_puskesmas_add';
-$route['administrasi/data_jumlah_penyakit_puskesmas/save'] = 'administrasi/data_jumlah_penyakit_puskesmas_save';
-$route['administrasi/data_jumlah_penyakit_puskesmas/edit/(:num)'] = 'administrasi/data_jumlah_penyakit_puskesmas_edit/$1';
-$route['administrasi/data_jumlah_penyakit_puskesmas/del/(:num)'] = 'administrasi/data_jumlah_penyakit_puskesmas_del/$1';
-
-$route['administrasi/data_jumlah_fasilitas_puskesmas']	= 'administrasi/data_jumlah_fasilitas_puskesmas_view';
-$route['administrasi/data_jumlah_fasilitas_puskesmas/add'] = 'administrasi/data_jumlah_fasilitas_puskesmas_add';
-$route['administrasi/data_jumlah_fasilitas_puskesmas/save'] = 'administrasi/data_jumlah_fasilitas_puskesmas_save';
-$route['administrasi/data_jumlah_fasilitas_puskesmas/edit/(:num)'] = 'administrasi/data_jumlah_fasilitas_puskesmas_edit/$1';
-$route['administrasi/data_jumlah_fasilitas_puskesmas/del/(:num)'] = 'administrasi/data_jumlah_fasilitas_puskesmas_del/$1';
-
-$route['administrasi/data_jumlah_obat_puskesmas']	= 'administrasi/data_jumlah_obat_puskesmas_view';
-$route['administrasi/data_jumlah_obat_puskesmas/add'] = 'administrasi/data_jumlah_obat_puskesmas_add';
-$route['administrasi/data_jumlah_obat_puskesmas/save'] = 'administrasi/data_jumlah_obat_puskesmas_save';
-$route['administrasi/data_jumlah_obat_puskesmas/edit/(:num)'] = 'administrasi/data_jumlah_obat_puskesmas_edit/$1';
-$route['administrasi/data_jumlah_obat_puskesmas/del/(:num)'] = 'administrasi/data_jumlah_obat_puskesmas_del/$1';
-
 
 $route['pimpinan/dashboard']	= 'pimpinan';
 $route['pimpinan/logout']	= 'pimpinan/logout';

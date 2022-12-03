@@ -12,22 +12,22 @@
               <td colspan="3">Centroid 1</td><td colspan="3">Centroid 2</td><td colspan="3">Centroid 3</td><td rowspan="2">C1</td><td rowspan="2">C2</td><td rowspan="2">C3</td>
               </tr>
               <tr align="center">
-              <td>81</td><td>65</td><td>65</td>
-              <td>65</td><td>81</td><td>65</td>
-              <td>65</td><td>65</td><td>81</td>
+              <td>0.1</td><td>5800</td><td>4</td>
+              <td>0.05</td><td>5200</td><td>2.5</td>
+              <td>0.01</td><td>4600</td><td>1</td>
               </tr>
               <?php 
-              $c1a = $maxnetto;
-              $c1b = $minnetto;
-              $c1c = $minnetto;
+              $c1a = 0.1; //Batas atas Centroid untuk Luas
+              $c1b = 5800; //Batas atas Centroid untuk Rata rata Netto
+              $c1c = 4; //Batas atas Centroid untuk Jumlah Panen per Kebun
               
-              $c2a = $minnetto;
-              $c2b = $maxnetto;
-              $c2c = $minnetto;
+              $c2a = 0.05; //Batas tengah Centroid untuk Luas
+              $c2b = 5200; //Batas tengah Centroid untuk Rata rata netto
+              $c2c = 2.5; //Batas tengah Centroid untuk Jumlah Panen per Kebun
               
-              $c3a = $minnetto;
-              $c3b = $minnetto;
-              $c3c = $maxnetto;
+              $c3a = 0.01; //Batas bawah Centroid untuk Luas
+              $c3b = 4600; //Batas bawah Centroid untuk Rata rata netto
+              $c3c = 1; //Batas bawah Centroid untuk Jumlah Panen per Kebun
               
               $c1a_b = "";
               $c1b_b = "";

@@ -37,14 +37,14 @@
 
 
             <table  id="table_data" class="table table-bordered table-admin">
-              <tr align="center"><td>No Puskesmas</td><td>Nama Puskesmas</td><td>Predikat</td></tr>
+              <tr align="center"><td>Nomor Petak</td><td>Kebun</td><td>Predikat</td></tr>
               <?php
                 foreach($data_hasil->result() as $h)
                 {
               ?>
               <tr align="center">
-              <td><?php echo $h->no_puskesmas; ?></td>
-              <td><?php echo $h->nama_puskesmas; ?></td>
+              <td><?php echo $h->nomor_petak; ?></td>
+              <td><?php echo $h->nama_kebun; ?></td>
               <td><?php echo $h->predikat; ?></td>
               </tr>
               <?php
