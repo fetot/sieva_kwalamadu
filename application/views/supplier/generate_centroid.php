@@ -16,7 +16,7 @@
           <br>
           <div class="table-responsive">
             <table id="table_data" class="table table-bordered table-striped table-admin">
-            <tr align="center"><td>No</td><td>Nomor Petak</td><td>Kebun</td><td>Luas</td><td>Rata-Rata</td><td colspan="3">Distance</td><td>Predikat</td></tr>
+            <tr align="center"><td>No</td><td>Nomor Petak</td><td>Kebun</td><td>Luas</td><td>Rata-Rata</td><td>Jumlah Panen per Kebun</td><td colspan="3">Distance</td><td>Predikat</td></tr>
             <?php $i=1; foreach($data_hasilpanen->result_array() as $s){ ?>
             <tr>
               <td><?php
@@ -27,6 +27,7 @@
                 <td><?php echo $s['nama_kebun']; ?></td>
                 <td><?php echo $s['luas']; ?></td>
                 <td><?php echo $s['rata_rata']; ?></td>
+                <td><?php echo $s['jumlahpanen']; ?></td>
                 <td><?php echo $s['d1']; ?></td>
                 <td><?php echo $s['d2']; ?></td>
                 <td><?php echo $s['d3']; ?></td>

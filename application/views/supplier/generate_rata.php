@@ -8,7 +8,7 @@
           <a class="btn btn-primary" href="<?php echo base_url(); ?>supplier/generate_centroid">Proses Data Akhir</a><br><br>
           <div class="table-responsive">
             <table  id="table_data" class="table table-bordered table-striped table-admin">
-            <tr><td>No</td><td>Nomor Petak</td><td>Kebun</td><td>Luas (Hektar)</td><td>Rata-Rata Netto (Kg)</td></tr>
+            <tr><td>No</td><td>Nomor Petak</td><td>Kebun</td><td>Luas (Hektar)</td><td>Rata-Rata Netto (Kg)</td><td>Jumlah Panen per Kebun</td></tr>
             <?php $i = 1; foreach($data_hasilpanen->result_array() as $s){ ?>
             <tr>
               <td><?php
@@ -19,6 +19,7 @@
               <td><?php echo $s['nama_kebun']; ?></td>
               <td><?php echo $s['luas']; ?></td>
               <td><?php echo $s['rata_rata']; ?></td>
+              <td><?php echo $s['jumlahpanen']; ?></td>
             </tr>
             <?php } ?>
           </table>

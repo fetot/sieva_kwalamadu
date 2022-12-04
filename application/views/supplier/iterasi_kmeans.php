@@ -8,7 +8,7 @@
             <a class="btn btn-primary" href="<?php echo base_url(); ?>supplier/iterasi_kmeans_lanjut">Proses Iterasi Selanjutnya</a><br><br>
             <div class="table-responsive">
             <table  id="table_data" class="table table-bordered table-admin">
-              <tr align="center"><td rowspan="2">Nomor Petak</td><td rowspan="2">Kebun</td><td rowspan="2">Luas (Hektar)</td><td rowspan="2">Rata-rata Netto (Kg)</td>
+              <tr align="center"><td rowspan="2">Nomor Petak</td><td rowspan="2">Kebun</td><td rowspan="2">Luas (Hektar)</td><td rowspan="2">Rata-rata Netto (Kg)</td><td rowspan="2">Jumlah Panen per Kebun</td>
               <td colspan="3">Centroid 1</td><td colspan="3">Centroid 2</td><td colspan="3">Centroid 3</td><td rowspan="2">C1</td><td rowspan="2">C2</td><td rowspan="2">C3</td>
               </tr>
               <tr align="center">
@@ -57,7 +57,7 @@
               $this->db->query('truncate table centroid_temp');
               $this->db->query('truncate table hasil_centroid');
               foreach($data_hasilpanen->result_array() as $s){ ?>
-              <tr><td><?php echo $s['nomor_petak']; ?></td><td><?php echo $s['nama_kebun']; ?></td><td><?php echo $s['luas']; ?></td><td><?php echo round($s['avgnetto'], 0); ?></td>
+              <tr><td><?php echo $s['nomor_petak']; ?></td><td><?php echo $s['nama_kebun']; ?></td><td><?php echo $s['luas']; ?></td><td><?php echo round($s['avgnetto'], 0); ?></td><td><?php echo round($s['jumlahpanen'], 0); ?></td>
               
               <td colspan="3"><?php 
                 $hc1 = sqrt(pow(($s['luas']-$c1a),2)+pow(($s['avgnetto']-$c1b),2)+pow(($s['jumlahpanen']-$c1c),2));

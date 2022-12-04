@@ -40,37 +40,6 @@ class Supplier extends CI_Controller {
 		}
 	}
 
-
-	function generate_awal(){
-
-		$sesinya	= $this->session->userdata('login');
-		if($sesinya['level'] != '3'){
-			
-			$this->load->view('supplier/error');
-
-		}
-		else {
-		
-			$this->load->model('model');
-			
-
-			$data_hasilpanen = $this->suppliermodel->selectdata('data_hasilpanen LEFT JOIN data_kebun on data_hasilpanen.nomor_petak=data_kebun.nomor_petak');
-			
-
-			$data = array(
-				'title'			=> 'Selamat Datang Supplier',
-				'nama'			=> $sesinya['nama'],
-				'data_hasilpanen'=> $data_hasilpanen,
-				'titlesistem'	=> $this->model->getTitle(),
-			);
-
-			$this->load->view('supplier/header',$data);
-			$this->load->view('supplier/generate_awal');
-			$this->load->view('supplier/footer');
-
-		}
-	}
-
 	function generate_rata(){
 
 		$sesinya	= $this->session->userdata('login');
@@ -80,7 +49,7 @@ class Supplier extends CI_Controller {
 
 		}
 		else {
-		$data_hasilpanen = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto 
+		$data_hasilpanen = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto
 		FROM data_hasilpanen INNER JOIN data_kebun ON data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
 		$v = "";
 		if(count($data_hasilpanen->result())<0)
@@ -107,7 +76,7 @@ class Supplier extends CI_Controller {
 			);
 
 
-		$data['data_hasilpanen'] = $this->db->query('select * from data_hasilpanen inner join data_kebun on data_hasilpanen.nomor_petak = data_kebun.nomor_petak 
+		$data['data_hasilpanen'] = $this->db->query('select *, COUNT(data_hasilpanen.netto) AS jumlahpanen from data_hasilpanen inner join data_kebun on data_hasilpanen.nomor_petak = data_kebun.nomor_petak 
 		inner join rata_rata on data_hasilpanen.nomor_petak=rata_rata.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
 
 		$this->load->view('supplier/header',$data);
@@ -175,7 +144,7 @@ class Supplier extends CI_Controller {
 			$this->db->query("insert into hasil (nomor_petak,predikat,d1,d2,d3) values('".$s->nomor_petak."','".$st."','".$d1."','".$d2."','".$d3."')");
 		}
 
-		$data['data_hasilpanen'] = $this->db->query("select * from data_hasilpanen left join (data_kebun,rata_rata,hasil) on data_hasilpanen.nomor_petak=rata_rata.nomor_petak and data_hasilpanen.nomor_petak=data_kebun.nomor_petak and data_hasilpanen.nomor_petak=hasil.nomor_petak group by data_hasilpanen.nomor_petak");
+		$data['data_hasilpanen'] = $this->db->query("select *, COUNT(data_hasilpanen.netto) AS jumlahpanen from data_hasilpanen left join (data_kebun,rata_rata,hasil) on data_hasilpanen.nomor_petak=rata_rata.nomor_petak and data_hasilpanen.nomor_petak=data_kebun.nomor_petak and data_hasilpanen.nomor_petak=hasil.nomor_petak group by data_hasilpanen.nomor_petak");
 
 		$this->load->view('supplier/header',$data);
 		$this->load->view('supplier/generate_centroid');
@@ -192,33 +161,9 @@ class Supplier extends CI_Controller {
 		}
 		else {
 			$this->load->model('model');
-			
-			$data_hasilpanen = $this->db->query('SELECT AVG(netto) as mediannet
-		FROM (
-		SELECT netto, @rownum:=@rownum+1 as `row_number`, @total_rows:=@rownum
-		  FROM data_hasilpanen, (SELECT @rownum:=0) r
-		  WHERE netto is NOT NULL
-		  ORDER BY netto
-		) as dd
-		WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) )');
-		if(count($data_hasilpanen->result())>0)
-		{
-			foreach($data_hasilpanen->result_array() as $row)
-			{
-				$mediannetto = round($row['mediannet'], 0);
-			}
-		}
 
-			$data_hasilpanen = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto, COUNT(netto) AS jumlahpanen, MAX(data_hasilpanen.netto) as maxnet, MIN(data_hasilpanen.netto) as minnet
+			$data_hasilpanen = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto, COUNT(netto) AS jumlahpanen
 			FROM data_hasilpanen INNER JOIN data_kebun ON data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
-			if(count($data_hasilpanen->result())>0)
-			{
-				foreach($data_hasilpanen->result_array() as $row)
-				{
-					$maxnetto = $row['maxnet'];
-					$minnetto = $row['minnet'];
-				}
-			}
 
 			$data = array(
 				'title'			=> 'Selamat Datang Supplier',
@@ -249,16 +194,9 @@ class Supplier extends CI_Controller {
 			'titlesistem'	=> $this->model->getTitle(),
 		);
 			
-		$data['data_hasilpanen'] = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto, COUNT(data_hasilpanen.netto) AS jumlahpanen, MAX(data_hasilpanen.netto) as maxnet, MIN(data_hasilpanen.netto) as minnet
+		$data['data_hasilpanen'] = $this->db->query('SELECT *, AVG(data_hasilpanen.netto) AS avgnetto, COUNT(data_hasilpanen.netto) AS jumlahpanen
 		FROM data_hasilpanen INNER JOIN data_kebun ON data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
-		if(count($data['data_hasilpanen']->result())>0)
-		{
-			foreach($data['data_hasilpanen']->result_array() as $row)
-			{
-				$maxnetto = $row['maxnet'];
-				$minnetto = $row['minnet'];
-			}
-		}
+
 		$id = "";
 		$id = $this->db->query('select max(nomor) as m from hasil_centroid');
 		foreach($id->result() as $i)

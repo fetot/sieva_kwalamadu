@@ -68,7 +68,6 @@ $route['pimpinan/cetak_hasilpanen']	= 'pimpinan/cetak_hasilpanen';
 $route['pimpinan/cetak_hasilpanen/view']	= 'pimpinan/cetak_hasilpanen_view';
 
 $route['supplier/dashboard']	= 'supplier';
-$route['supplier/generate_awal']	= 'supplier/generate_awal';
 $route['supplier/generate_rata']	= 'supplier/generate_rata';
 $route['supplier/generate_centroid']	= 'supplier/generate_centroid';
 $route['supplier/iterasi_kmeans']	= 'supplier/iterasi_kmeans';

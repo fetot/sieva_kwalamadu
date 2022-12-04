@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2022 at 12:27 PM
+-- Generation Time: Dec 04, 2022 at 09:31 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -92,9 +92,9 @@ CREATE TABLE `data` (
 
 INSERT INTO `data` (`no_data`, `title`, `sub`) VALUES
 (1, 'SISTEM INFORMASI EVALUASI (SIEVA) HASIL PANEN RAYA LAHAN TEBU PTPN II KWALA MADU', 'Kecamatan Stabat, Kabupaten Langkat'),
-(2, 'Petunjuk Penggunaan', 'Hello'),
-(3, 'Tentang', 'kanjbhsd asdlkjbkasd'),
-(4, 'Wewenang', 'lmkansfas alsmdkasd');
+(2, 'Petunjuk Penggunaan', '<b>Admin</b><br>\r\n<ol>\r\n<li>Tambahkan terlebih dahulu Master Data untuk Data Kebun sebelum menambah Data Hasil Panen jika Data Kebun belum terdata</li>\r\n<li>Tambahkan Data Hasil Panen dengan menyesuaikan Nomor Petak pada Data Kebun</li>\r\n</ol>\r\n<br>\r\n<b>Pimpinan</b><br>\r\n<ol>\r\n<li>Untuk mencetak laporan dalam bentuk PDF, klik \"Cetak Data\" pada halaman Cetak Laporan Data</li>\r\n</ol>\r\n<br>\r\n<b>Supplier</b><br>\r\n<ol>\r\n<li>Untuk melakukan Generate nilai Rata-rata dan Centroid, Proses Data Rata-rata terlebih dahulu kemudian Proses Data Akhir </li>\r\n<li>Untuk melakukan Iterasi K-Means, pada Data Awal lakukan proses iterasi selanjutnya sampai tahapan akhir agar mendapatkan hasil akhir iterasi</li>\r\n</ol>'),
+(3, 'Tentang', 'PT Perkebunan Nusantara II Kwala Madu merupakan salah satu kebun PT Perkebunan Nusantara II yang berada di Distrik Semusim dan termasuk dalam unit usaha budidaya tebu. Selama ini hasil panen merupakan permasalahan dalam PT Perkebunan Nusantara II Kwala Madu. Terdapat beberapa faktor yang mempengaruhi produktivitas panen raya lahan tebu seperti kesuburan tanah, ketersediaan tenaga kerja, ketidaksesuaian antara varietas tebu dengan lokasi pertanian yang tersedia, sistem irigasi dan penerapan teknologi. </br>Maka dari permasalahan tersebut diperlukan suatu sistem evaluasi yang dapat memperbaiki hasil produktivitas panen raya lahan tebu. Kemudian untuk membuat sistem evaluasi tersebut berjalan dengan baik, mengatasi kecurangan dan memudahkan karyawan maka diperlukan digitilisasi dari sistem evaluasi tersebut menggunakan metode K-Means Clustering.'),
+(4, 'Wewenang', '<b>Admin</b><br>\r\n<ul>\r\n<li>Manajemen data kebun yaitu menambah, mengubah, dan menghapus data</li>\r\n<li>Manajemen data hasil panen yaitu menambah, mengubah, dan menghapus data</li>\r\n</ul>\r\n<br>\r\n<b>Pimpinan</b><br>\r\n<ul>\r\n<li>Cetak laporan data kebun</li>\r\n<li>Cetak laporan data hasil panen</li>\r\n</ul>\r\n<br>\r\n<b>Supplier</b><br>\r\n<ul>\r\n<li>Analisis data generate data rata rata dan centroid</li>\r\n<li>Analisis data Iterasi K-Means</li>\r\n</ul>');
 
 -- --------------------------------------------------------
 
