@@ -4,7 +4,7 @@
         <?php error_reporting(0); ?>
           <h1>Data Hasil Iterasi</h1>
             <div id="body">
-            <a class="btn btn-primary" href="<?php echo base_url(); ?>supplier/iterasi_kmeans">Mulai Awal</a><br><br>
+            <a class="btn btn-primary" href="<?php echo base_url(); ?>analis/iterasi_kmeans">Mulai Awal</a><br><br>
             <?php
               foreach($q->result_array() as $hq)
               {

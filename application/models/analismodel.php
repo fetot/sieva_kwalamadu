@@ -1,6 +1,6 @@
 <?php
 
-class Suppliermodel extends CI_Model {
+class Analismodel extends CI_Model {
 	
 	function insertdata($tabel, $data){
 		return $this->db->insert($tabel,$data);

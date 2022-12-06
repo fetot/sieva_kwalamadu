@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 04, 2022 at 09:31 AM
+-- Generation Time: Dec 06, 2022 at 03:32 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -56,23 +56,7 @@ INSERT INTO `centroid_temp` (`id`, `iterasi`, `c1`, `c2`, `c3`) VALUES
 (13, 1, '1', '0', '0'),
 (14, 1, '0', '0', '1'),
 (15, 1, '0', '0', '1'),
-(16, 1, '1', '0', '0'),
-(17, 2, '1', '0', '0'),
-(18, 2, '0', '1', '0'),
-(19, 2, '1', '0', '0'),
-(20, 2, '1', '0', '0'),
-(21, 2, '1', '0', '0'),
-(22, 2, '0', '1', '0'),
-(23, 2, '1', '0', '0'),
-(24, 2, '1', '0', '0'),
-(25, 2, '1', '0', '0'),
-(26, 2, '1', '0', '0'),
-(27, 2, '0', '0', '1'),
-(28, 2, '0', '1', '0'),
-(29, 2, '1', '0', '0'),
-(30, 2, '0', '1', '0'),
-(31, 2, '0', '0', '1'),
-(32, 2, '1', '0', '0');
+(16, 1, '1', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -92,9 +76,9 @@ CREATE TABLE `data` (
 
 INSERT INTO `data` (`no_data`, `title`, `sub`) VALUES
 (1, 'SISTEM INFORMASI EVALUASI (SIEVA) HASIL PANEN RAYA LAHAN TEBU PTPN II KWALA MADU', 'Kecamatan Stabat, Kabupaten Langkat'),
-(2, 'Petunjuk Penggunaan', '<b>Admin</b><br>\r\n<ol>\r\n<li>Tambahkan terlebih dahulu Master Data untuk Data Kebun sebelum menambah Data Hasil Panen jika Data Kebun belum terdata</li>\r\n<li>Tambahkan Data Hasil Panen dengan menyesuaikan Nomor Petak pada Data Kebun</li>\r\n</ol>\r\n<br>\r\n<b>Pimpinan</b><br>\r\n<ol>\r\n<li>Untuk mencetak laporan dalam bentuk PDF, klik \"Cetak Data\" pada halaman Cetak Laporan Data</li>\r\n</ol>\r\n<br>\r\n<b>Supplier</b><br>\r\n<ol>\r\n<li>Untuk melakukan Generate nilai Rata-rata dan Centroid, Proses Data Rata-rata terlebih dahulu kemudian Proses Data Akhir </li>\r\n<li>Untuk melakukan Iterasi K-Means, pada Data Awal lakukan proses iterasi selanjutnya sampai tahapan akhir agar mendapatkan hasil akhir iterasi</li>\r\n</ol>'),
+(2, 'Petunjuk Penggunaan', '<b>Admin</b><br>\r\n<ol>\r\n<li>Tambahkan terlebih dahulu Master Data untuk Data Kebun sebelum menambah Data Hasil Panen jika Data Kebun belum terdata</li>\r\n<li>Tambahkan Data Hasil Panen dengan menyesuaikan Nomor Petak pada Data Kebun</li>\r\n</ol>\r\n<br>\r\n<b>Pimpinan</b><br>\r\n<ol>\r\n<li>Untuk mencetak laporan dalam bentuk PDF, klik \"Cetak Data\" pada halaman Cetak Laporan Data</li>\r\n</ol>\r\n<br>\r\n<b>Analis</b><br>\r\n<ol>\r\n<li>Untuk melakukan Generate nilai Rata-rata dan Centroid, Proses Data Rata-rata terlebih dahulu kemudian Proses Data Akhir </li>\r\n<li>Untuk melakukan Iterasi K-Means, pada Data Awal lakukan proses iterasi selanjutnya sampai tahapan akhir agar mendapatkan hasil akhir iterasi</li>\r\n</ol>'),
 (3, 'Tentang', 'PT Perkebunan Nusantara II Kwala Madu merupakan salah satu kebun PT Perkebunan Nusantara II yang berada di Distrik Semusim dan termasuk dalam unit usaha budidaya tebu. Selama ini hasil panen merupakan permasalahan dalam PT Perkebunan Nusantara II Kwala Madu. Terdapat beberapa faktor yang mempengaruhi produktivitas panen raya lahan tebu seperti kesuburan tanah, ketersediaan tenaga kerja, ketidaksesuaian antara varietas tebu dengan lokasi pertanian yang tersedia, sistem irigasi dan penerapan teknologi. </br>Maka dari permasalahan tersebut diperlukan suatu sistem evaluasi yang dapat memperbaiki hasil produktivitas panen raya lahan tebu. Kemudian untuk membuat sistem evaluasi tersebut berjalan dengan baik, mengatasi kecurangan dan memudahkan karyawan maka diperlukan digitilisasi dari sistem evaluasi tersebut menggunakan metode K-Means Clustering.'),
-(4, 'Wewenang', '<b>Admin</b><br>\r\n<ul>\r\n<li>Manajemen data kebun yaitu menambah, mengubah, dan menghapus data</li>\r\n<li>Manajemen data hasil panen yaitu menambah, mengubah, dan menghapus data</li>\r\n</ul>\r\n<br>\r\n<b>Pimpinan</b><br>\r\n<ul>\r\n<li>Cetak laporan data kebun</li>\r\n<li>Cetak laporan data hasil panen</li>\r\n</ul>\r\n<br>\r\n<b>Supplier</b><br>\r\n<ul>\r\n<li>Analisis data generate data rata rata dan centroid</li>\r\n<li>Analisis data Iterasi K-Means</li>\r\n</ul>');
+(4, 'Wewenang', '<b>Admin</b><br>\r\n<ul>\r\n<li>Manajemen data kebun yaitu menambah, mengubah, dan menghapus data</li>\r\n<li>Manajemen data hasil panen yaitu menambah, mengubah, dan menghapus data</li>\r\n</ul>\r\n<br>\r\n<b>Pimpinan</b><br>\r\n<ul>\r\n<li>Cetak laporan data kebun</li>\r\n<li>Cetak laporan data hasil panen</li>\r\n</ul>\r\n<br>\r\n<b>Analis</b><br>\r\n<ul>\r\n<li>Analisis data generate data rata rata dan centroid</li>\r\n<li>Analisis data Iterasi K-Means</li>\r\n</ul>');
 
 -- --------------------------------------------------------
 
@@ -265,8 +249,7 @@ CREATE TABLE `hasil_centroid` (
 --
 
 INSERT INTO `hasil_centroid` (`nomor`, `c1a`, `c1b`, `c1c`, `c2a`, `c2b`, `c2c`, `c3a`, `c3b`, `c3c`) VALUES
-(1, '0.097', '5822', '2.3', '0.086666666666667', '5271.1111', '3', '0.09', '2533.3333333333', '1'),
-(2, '0', '0', '0', '0', '0', '0', '0', '0', '0');
+(1, '0.097', '5822', '2.3', '0.086666666666667', '5271.1111', '3', '0.09', '2533.3333333333', '1');
 
 -- --------------------------------------------------------
 
@@ -323,7 +306,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `username`, `password`, `level`, `nama`) VALUES
 (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'Zarwin Admin'),
 (2, 'pimpinan', '59335c9f58c78597ff73f6706c6c8fa278e08b3a', 2, 'Muhammad Zarwin'),
-(3, 'supplier', 'e2979e759574b094b7c50f54846af43ef8eff1a0', 3, 'Zarwin Supplier');
+(3, 'analis', '4f5dc9ce48e697aa6f0c2cccb76ec926c9b33796', 3, 'Zarwin Analis');
 
 --
 -- Indexes for dumped tables
@@ -385,7 +368,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `centroid_temp`
 --
 ALTER TABLE `centroid_temp`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `data`
@@ -415,7 +398,7 @@ ALTER TABLE `hasil`
 -- AUTO_INCREMENT for table `hasil_centroid`
 --
 ALTER TABLE `hasil_centroid`
-  MODIFY `nomor` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `nomor` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `rata_rata`

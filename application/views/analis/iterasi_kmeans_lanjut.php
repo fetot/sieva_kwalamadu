@@ -5,7 +5,7 @@
           <h1>Data Proses Iterasi</h1>
 
             <div id="body">
-            <a class="btn btn-primary" href="<?php echo base_url(); ?>supplier/iterasi_kmeans_lanjut">Proses Iterasi Selanjutnya</a><br><br>
+            <a class="btn btn-primary" href="<?php echo base_url(); ?>analis/iterasi_kmeans_lanjut">Proses Iterasi Selanjutnya</a><br><br>
             <?php
               $c1a = "";
               $c1b = "";

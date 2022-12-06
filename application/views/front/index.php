@@ -27,7 +27,7 @@
               }
             ?>
             <div id="output"></div>
-
+            <!-- Username sama dengan password, cth: admin - admin-->
             <div class="form-box">
               <form action="<?=base_url()?>auth" method="post">
                 <legend><h3 class="text-center">Login</h3></legend>
@@ -44,7 +44,7 @@
                   <select name="level" class="form-control input-lg" required>
                     <option value="">-Pilih Level-</option>
                     <option value="2">Pimpinan</option>
-                    <option value="3">Supplier</option>
+                    <option value="3">Analis</option>
                     <option value="1">Administrasi</option>
                   </select>
                 </div>

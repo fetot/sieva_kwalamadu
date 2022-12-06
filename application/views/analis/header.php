@@ -28,18 +28,18 @@
           </button>
           <a class="navbar-brand" href="#">
           <img src="<?php echo base_url();?>assets/img/logo-navbar.png" class="logo-navbar">
-          <strong>Supplier</strong>
+          <strong>Analis</strong>
           </a>
         </div>
         
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="<?php echo base_url();?>supplier/dashboard"><i class="fa fa-home"></i> Beranda</a></li>
+            <li><a href="<?php echo base_url();?>analis/dashboard"><i class="fa fa-home"></i> Beranda</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-th-list"></i> Analisa Data <i class="fa fa-caret-down"></i></a>
               <ul class="dropdown-menu tipe-kiri dropdown-menu-login2">
-                <li><a href="<?php echo base_url(); ?>supplier/generate_rata"><i class="fa fa-tags"></i> Generate Nilai Rata-Rata dan Centroid</a></li>
-                <li><a href="<?php echo base_url(); ?>supplier/iterasi_kmeans"><i class="fa fa-tags"></i> Iterasi K-Means</a></li>
+                <li><a href="<?php echo base_url(); ?>analis/generate_rata"><i class="fa fa-tags"></i> Generate Nilai Rata-Rata dan Centroid</a></li>
+                <li><a href="<?php echo base_url(); ?>analis/iterasi_kmeans"><i class="fa fa-tags"></i> Iterasi K-Means</a></li>
               </ul>
             </li>
             

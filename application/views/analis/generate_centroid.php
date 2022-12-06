@@ -4,7 +4,7 @@
           <h1>Data Akhir</h1>
 
           <div id="body">
-          <a  class="btn btn-primary" href="<?php echo base_url(); ?>supplier/generate_rata">Proses Data Rata-Rata</a> <a  class="btn btn-success" href="<?php echo base_url(); ?>supplier/generate_centroid">Proses Data Akhir</a><br><br>
+          <a  class="btn btn-primary" href="<?php echo base_url(); ?>analis/generate_rata">Proses Data Rata-Rata</a> <a  class="btn btn-success" href="<?php echo base_url(); ?>analis/generate_centroid">Proses Data Akhir</a><br><br>
           <div class="table-responsive">
             <table  id="table_data" class="table table-bordered table-striped table-admin">
             <tr><td>Centroid 1</td><td>Baik</td><td><?php echo $c1; ?></td></tr>

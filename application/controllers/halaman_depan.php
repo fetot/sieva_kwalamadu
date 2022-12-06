@@ -82,7 +82,7 @@ class Halaman_depan extends CI_Controller {
 					redirect("pimpinan/dashboard");
 				}
 				elseif($data["level"] == "3"){
-					redirect("supplier/dashboard");
+					redirect("analis/dashboard");
 				}
 
 				else {

@@ -1,16 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Supplier extends CI_Controller {
+class analis extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
 
 		if($this->session->userdata('login') != TRUE)
 		{
-			$this->load->view('supplier/error');
+			$this->load->view('analis/error');
 		}
 
-		$this->load->model('suppliermodel');
+		$this->load->model('analismodel');
 		$this->load->model('model');
 	}
 
@@ -19,23 +19,23 @@ class Supplier extends CI_Controller {
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '3'){
 			
-			$this->load->view('supplier/error');
+			$this->load->view('analis/error');
 
 		}
 		else {
 		
 			$this->load->model('model');
 			$data = array(
-				'title'			=> 'Selamat Datang Supplier',
+				'title'			=> 'Selamat Datang Analis',
 				'nama'			=> $sesinya['nama'],
 				'petunjuk'		=> $this->model->getPetunjuk(),
 				'wewenang'		=> $this->model->getWewenang(),
 				'titlesistem'	=> $this->model->getTitle(),
 			);
 			
-			$this->load->view('supplier/header',$data);
-			$this->load->view('supplier/dashboard');
-			$this->load->view('supplier/footer');
+			$this->load->view('analis/header',$data);
+			$this->load->view('analis/dashboard');
+			$this->load->view('analis/footer');
 
 		}
 	}
@@ -45,7 +45,7 @@ class Supplier extends CI_Controller {
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '3'){
 			
-			$this->load->view('supplier/error');
+			$this->load->view('analis/error');
 
 		}
 		else {
@@ -70,7 +70,7 @@ class Supplier extends CI_Controller {
 		}
 		
 			$data = array(
-				'title'			=> 'Selamat Datang Supplier',
+				'title'			=> 'Selamat Datang Analis',
 				'nama'			=> $sesinya['nama'],
 				'titlesistem'	=> $this->model->getTitle(),
 			);
@@ -79,9 +79,9 @@ class Supplier extends CI_Controller {
 		$data['data_hasilpanen'] = $this->db->query('select *, COUNT(data_hasilpanen.netto) AS jumlahpanen from data_hasilpanen inner join data_kebun on data_hasilpanen.nomor_petak = data_kebun.nomor_petak 
 		inner join rata_rata on data_hasilpanen.nomor_petak=rata_rata.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
 
-		$this->load->view('supplier/header',$data);
-		$this->load->view('supplier/generate_rata');
-		$this->load->view('supplier/footer');
+		$this->load->view('analis/header',$data);
+		$this->load->view('analis/generate_rata');
+		$this->load->view('analis/footer');
 		}
 	}
 
@@ -91,13 +91,13 @@ class Supplier extends CI_Controller {
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '3'){
 			
-			$this->load->view('supplier/error');
+			$this->load->view('analis/error');
 
 		}
 		else {
 
 			$data = array(
-				'title'			=> 'Selamat Datang Supplier',
+				'title'			=> 'Selamat Datang Analis',
 				'nama'			=> $sesinya['nama'],
 				'titlesistem'	=> $this->model->getTitle(),
 		);
@@ -146,9 +146,9 @@ class Supplier extends CI_Controller {
 
 		$data['data_hasilpanen'] = $this->db->query("select *, COUNT(data_hasilpanen.netto) AS jumlahpanen from data_hasilpanen left join (data_kebun,rata_rata,hasil) on data_hasilpanen.nomor_petak=rata_rata.nomor_petak and data_hasilpanen.nomor_petak=data_kebun.nomor_petak and data_hasilpanen.nomor_petak=hasil.nomor_petak group by data_hasilpanen.nomor_petak");
 
-		$this->load->view('supplier/header',$data);
-		$this->load->view('supplier/generate_centroid');
-		$this->load->view('supplier/footer');
+		$this->load->view('analis/header',$data);
+		$this->load->view('analis/generate_centroid');
+		$this->load->view('analis/footer');
 		}
 	}
 
@@ -156,7 +156,7 @@ class Supplier extends CI_Controller {
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '3'){
 			
-			$this->load->view('supplier/error');
+			$this->load->view('analis/error');
 
 		}
 		else {
@@ -166,15 +166,15 @@ class Supplier extends CI_Controller {
 			FROM data_hasilpanen INNER JOIN data_kebun ON data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak');
 
 			$data = array(
-				'title'			=> 'Selamat Datang Supplier',
+				'title'			=> 'Selamat Datang Analis',
 				'nama'			=> $sesinya['nama'],
 				'data_hasilpanen'=> $data_hasilpanen,
 				'titlesistem'	=> $this->model->getTitle(),
 			);
 
-			$this->load->view('supplier/header',$data);
-			$this->load->view('supplier/iterasi_kmeans');
-			$this->load->view('supplier/footer');
+			$this->load->view('analis/header',$data);
+			$this->load->view('analis/iterasi_kmeans');
+			$this->load->view('analis/footer');
 		}
 	}
 
@@ -184,12 +184,12 @@ class Supplier extends CI_Controller {
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '3'){
 			
-			$this->load->view('supplier/error');
+			$this->load->view('analis/error');
 
 		}
 		else {
 		$data = array(
-			'title'			=> 'Selamat Datang Supplier',
+			'title'			=> 'Selamat Datang Analis',
 			'nama'			=> $sesinya['nama'],
 			'titlesistem'	=> $this->model->getTitle(),
 		);
@@ -250,13 +250,13 @@ class Supplier extends CI_Controller {
 					alert("Proses iterasi berakhir pada tahap ke-<?php echo $it; ?>");
 				</script>
 			<?php
-				echo "<meta http-equiv='refresh' content='0; url=".base_url()."supplier/iterasi_kmeans_hasil'>";
+				echo "<meta http-equiv='refresh' content='0; url=".base_url()."analis/iterasi_kmeans_hasil'>";
 		}
 		else
 		{
-			$this->load->view('supplier/header',$data);
-			$this->load->view('supplier/iterasi_kmeans_lanjut');
-			$this->load->view('supplier/footer');
+			$this->load->view('analis/header',$data);
+			$this->load->view('analis/iterasi_kmeans_lanjut');
+			$this->load->view('analis/footer');
 		}
 		}
 	}	
@@ -267,7 +267,7 @@ class Supplier extends CI_Controller {
 		$sesinya	= $this->session->userdata('login');
 		if($sesinya['level'] != '3'){
 			
-			$this->load->view('supplier/error');
+			$this->load->view('analis/error');
 
 		}
 		else {
@@ -275,7 +275,7 @@ class Supplier extends CI_Controller {
 			$data_hasil = $this->db->query('SELECT * FROM hasil INNER JOIN data_hasilpanen on hasil.nomor_petak = data_hasilpanen.nomor_petak INNER JOIN data_kebun on data_hasilpanen.nomor_petak = data_kebun.nomor_petak GROUP BY data_hasilpanen.nomor_petak order by predikat');
 
 			$data = array(
-				'title'			=> 'Selamat Datang Supplier',
+				'title'			=> 'Selamat Datang Analis',
 				'nama'			=> $sesinya['nama'],
 				'titlesistem'	=> $this->model->getTitle(),
 				'data_hasil'	=> $data_hasil,
@@ -283,9 +283,9 @@ class Supplier extends CI_Controller {
 
 			$data['q'] = $this->db->query('select * from centroid_temp group by iterasi');
 
-			$this->load->view('supplier/header',$data);
-			$this->load->view('supplier/iterasi_kmeans_hasil');
-			$this->load->view('supplier/footer');
+			$this->load->view('analis/header',$data);
+			$this->load->view('analis/iterasi_kmeans_hasil');
+			$this->load->view('analis/footer');
 		}
 	}
 

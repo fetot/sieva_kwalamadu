@@ -5,7 +5,7 @@
           <h1>Data Awal</h1>
 
             <div id="body">
-            <a class="btn btn-primary" href="<?php echo base_url(); ?>supplier/iterasi_kmeans_lanjut">Proses Iterasi Selanjutnya</a><br><br>
+            <a class="btn btn-primary" href="<?php echo base_url(); ?>analis/iterasi_kmeans_lanjut">Proses Iterasi Selanjutnya</a><br><br>
             <div class="table-responsive">
             <table  id="table_data" class="table table-bordered table-admin">
               <tr align="center"><td rowspan="2">Nomor Petak</td><td rowspan="2">Kebun</td><td rowspan="2">Luas (Hektar)</td><td rowspan="2">Rata-rata Netto (Kg)</td><td rowspan="2">Jumlah Panen per Kebun</td>

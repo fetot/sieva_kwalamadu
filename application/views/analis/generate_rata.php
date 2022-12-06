@@ -5,7 +5,7 @@
           <p>Netto didapat dari hasil perhitungan Bruto dikurang Tara.</br>Rata-rata Netto didapatkan dari hasil perhitungan rata-rata netto per nomor petak atau kebun.</p>
 
           <div id="body">
-          <a class="btn btn-primary" href="<?php echo base_url(); ?>supplier/generate_centroid">Proses Data Akhir</a><br><br>
+          <a class="btn btn-primary" href="<?php echo base_url(); ?>analis/generate_centroid">Proses Data Akhir</a><br><br>
           <div class="table-responsive">
             <table  id="table_data" class="table table-bordered table-striped table-admin">
             <tr><td>No</td><td>Nomor Petak</td><td>Kebun</td><td>Luas (Hektar)</td><td>Rata-Rata Netto (Kg)</td><td>Jumlah Panen per Kebun</td></tr>

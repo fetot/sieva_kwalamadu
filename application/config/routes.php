@@ -67,14 +67,14 @@ $route['pimpinan/cetak_kebun/view']	= 'pimpinan/cetak_kebun_view';
 $route['pimpinan/cetak_hasilpanen']	= 'pimpinan/cetak_hasilpanen';
 $route['pimpinan/cetak_hasilpanen/view']	= 'pimpinan/cetak_hasilpanen_view';
 
-$route['supplier/dashboard']	= 'supplier';
-$route['supplier/generate_rata']	= 'supplier/generate_rata';
-$route['supplier/generate_centroid']	= 'supplier/generate_centroid';
-$route['supplier/iterasi_kmeans']	= 'supplier/iterasi_kmeans';
-$route['supplier/iterasi_kmeans_lanjut']	= 'supplier/iterasi_kmeans_lanjut';
-$route['supplier/iterasi_kmeans_hasil']	= 'supplier/iterasi_kmeans_hasil';
+$route['analis/dashboard']	= 'analis';
+$route['analis/generate_rata']	= 'analis/generate_rata';
+$route['analis/generate_centroid']	= 'analis/generate_centroid';
+$route['analis/iterasi_kmeans']	= 'analis/iterasi_kmeans';
+$route['analis/iterasi_kmeans_lanjut']	= 'analis/iterasi_kmeans_lanjut';
+$route['analis/iterasi_kmeans_hasil']	= 'analis/iterasi_kmeans_hasil';
 
-$route['supplier/logout']	= 'supplier/logout';
+$route['analis/logout']	= 'analis/logout';
 
 
 /* End of file routes.php */
